@@ -1,0 +1,19 @@
+[30-Mar-2019 00:40:49 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:14 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:15 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:16 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:17 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:17 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[30-Mar-2019 00:41:18 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:48:21 UTC] PHP Warning:  require(/home/smartseasph/app.smartseas.ph../../vendor/autoload.php): failed to open stream: No such file or directory in /home/smartseasph/app.smartseas.ph/index.php on line 24
+[01-Sep-2019 12:48:21 UTC] PHP Fatal error:  require(): Failed opening required '/home/smartseasph/app.smartseas.ph../../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/smartseasph/app.smartseas.ph/index.php on line 24
+[01-Sep-2019 12:49:06 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:49:09 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:50:19 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:50:23 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:51:03 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:51:54 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:52:36 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:53:02 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:53:04 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20
+[01-Sep-2019 12:53:05 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/smartseasph/app.smartseas.ph/vendor/spatie/laravel-permission/src/helpers.php on line 20

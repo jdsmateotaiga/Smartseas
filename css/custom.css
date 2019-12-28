@@ -1,0 +1,357 @@
+.lh-1-4 { line-height: 1.4; }
+.lh-1 { line-height: 1; }
+.lib { display: inline-block; }
+.fR { float: right; }
+.ls-0 { letter-spacing: 0; }
+.fwN { font-weight: normal; }
+
+.danger { color: red; }
+
+.alert {
+    padding: .40rem 1.25rem!important;
+}
+
+.approve_section table {
+    border-collapse:separate!important;
+    border-spacing: 0 1em;
+}
+
+.vam {
+  vertical-align: middle;
+}
+
+.approve_section tr {
+    margin-bottom: 5px;
+}
+
+.approve_section tr:last-child {
+    margin-bottom: 15px;
+}
+
+p.image_approve {
+    width: 120px;
+}
+
+.img_res {
+    width: 100%;
+    height: auto;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.dashboard-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.profile-img {
+    margin: 10px auto 0;
+    width: 150px;
+}
+
+.profile-img img,
+.dashboard-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sidebar-menu .nav-item.active .dropdown-menu li.active,
+.sidebar-menu .nav-item.active > a {
+    background-color: #ececec;
+    font-weight: 500;
+}
+
+#output .child-child {
+    padding-left: 30px;
+}
+
+#output .child {
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+#output .child-child .form-row {
+    margin-bottom: 10px;
+}
+
+.inner-block {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.btn-danger {
+    margin: 5px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  #project-board .col-md-6 > div,
+  #project-board .col-md-12 > div {
+    margin-bottom: 5px;
+  }
+  p {
+    line-height: 1.2;
+  }
+}
+
+.controls .btn {
+  padding: 3px 5px;
+}
+
+.workplan-list .controls a,
+.workplan-list .controls button {
+  font-size: 24px;
+}
+
+.btn-success.act,
+.btn-danger.del,
+.workplan-list .controls button {
+  padding: 0;
+  margin: -10px 0 0 0;
+  background:none;
+  color: red;
+  outline: none;
+  border: none;
+}
+
+.btn-success.act,
+.btn-danger.del {
+    margin: -8px 0 0 6px;
+}
+
+.btn-success.act:focus, .btn-success.act:hover, .btn-success.act:active,
+.btn-danger.del:focus, .btn-danger.del:hover, .btn-danger.del:active,
+.workplan-list .controls button:focus,
+.workplan-list .controls button:hover,
+.workplan-list .controls button:active {
+  outline: none!important;
+  background: none!important;
+  border: none!important;
+  color: red!important;
+  box-shadow: none!important;
+}
+
+select option[value="low"] {
+    background: #4F6228;
+    color: #f1f1f1;
+}
+
+select option[value="medium"] {
+    background: #FFFF00;
+    color: #f1f1f1;
+}
+
+select option[value="high"] {
+    background: #FF0000;
+    color: #f1f1f1;
+}
+
+.chip {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+
+.st-low .chip {
+    background-color: #4F6228;
+}
+
+.bd-low {
+  border: 1px dotted #4F6228;
+}
+
+.st-medium .chip {
+    background-color: #FFFF00;
+}
+
+.bd-medium {
+    border: 1px dotted #FFFF00;
+}
+
+.st-high .chip {
+    background-color: #FF0000;
+}
+
+.bd-high {
+    border: 1px dotted #FF0000;
+}
+
+.center {
+    text-align: center;
+}
+
+a.btn {
+    color: #fff!important;
+}
+
+.ui-slider {
+  padding: 0 10px;
+}
+
+#task-container .task-list {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+#task-container .task-list:last-child {
+    margin-bottom: 0;
+}
+
+#task-container .task-list h6 {
+    font-size: 110%;
+}
+
+#task-container .task-list h6 span {
+    font-size: 90%;
+}
+
+#task-container .task-list .task-area {
+  display: none;
+}
+
+#task-container .task-list .task-area.active {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  #task-container .task-list {
+    margin-bottom: 20px;
+  }
+}
+
+.task-area .ps,
+.task-area .message-content {
+    overflow: auto!important;
+}
+
+.task-area .ps {
+    max-height: 350px!important;
+}
+
+.timeline-bar  {
+    border: 1px solid #ccc;
+    display: block;
+    text-align: center;
+}
+
+.timeline-bar.active {
+    background-color: yellow;
+}
+
+
+.project-task {
+    border: 1px solid #ccc;
+}
+
+.task-container {
+    display: none;
+}
+
+.task-container.active {
+    margin-top: 10px;
+    display: block;
+}
+
+.task-container .chip {
+    vertical-align: middle;
+}
+
+.pagination li {
+    padding: 10px;
+}
+
+#create-task .modal-dialog {
+    max-width: 600px!important;
+}
+
+span.small {
+    font-size: 80%;
+}
+
+span.small.bold {
+    font-weight: bold;
+    color: #0f9aee;
+}
+
+.month-table {
+    display: none;
+    margin-top: 10px;
+}
+
+.timeline label {
+    width: 100%;
+    text-align: center;
+}
+
+.timeline .form-group input:checked + .month-table {
+    display: block;
+}
+
+.month-table label {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.month-table input {
+    width: auto;
+}
+
+.month-table tr td:last-child {
+    padding-left: 15px;
+}
+
+.header {
+  height: auto!important;
+}
+
+.search-area {
+  width: 96%;
+  margin: 0 auto 10px;
+}
+
+body .main-content {
+  padding: 140px 20px 20px;
+}
+
+.nav-tabs li a {
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #fff;
+    display: block;
+}
+
+.nav-tabs li a.active {
+    background-color: #16A8F9;
+}
+
+.tab-content > div {
+    display: none;
+}
+
+.tab-content > div.active {
+    display: block;
+}
+
+.filter-area .toggle-container {
+    display: none;
+}
+
+.filter-arrow.active .ti-angle-up,
+.filter-area .toggle-container.active {
+    display: block;
+}
+
+.filter-arrow.active .ti-angle-down,
+.filter-arrow .ti-angle-up {
+    display: none;
+}
+
+.tab-content mark {
+    padding: 0;
+    background-color: yellow;
+}
