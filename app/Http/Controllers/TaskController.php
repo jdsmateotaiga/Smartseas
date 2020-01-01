@@ -55,13 +55,13 @@ class TaskController extends Controller
           'output_id'          => 'required',
           'fund_source'        => 'required',
           'code_id'            => 'required',
-          'amount'             => 'required',
-          'status'             => 'required'
+          'unit_cost'         => 'required',
+          // 'status'             => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            echo 'failed';
+          return response()->json($validator->messages(), 200);
         } else {
           $partner_id = Helper::decrypt_id($request->input('partner_id'));
           $project_id = Helper::decrypt_id($request->input('project_id'));
@@ -80,13 +80,13 @@ class TaskController extends Controller
           $task->deliverables         = $request->input('deliverables');
           $task->fund_source          = $request->input('fund_source');
           $task->code_id              = $request->input('code_id');
-          $task->amount               = $request->input('amount');
-          $task->status               = $request->input('status');
+          $task->unit_cost           = $request->input('unit_cost');
+          // $task->status               = $request->input('status');
 
 
           $timeline = [];
           for($i = 1; $i <= 4; $i++) {
-            if (  array_key_exists('q-'.$i, $request->all()) ) {
+            if (array_key_exists('q-'.$i, $request->all()) ) {
                 array_push($timeline, $request->input('q-'.$i));
             }
           }
@@ -96,9 +96,7 @@ class TaskController extends Controller
 
           $month = [];
           for($i = 1; $i <= 12; $i++) {
-            if (  array_key_exists('m-'.$i, $request->all()) ) {
-                array_push($month, $request->input('m-'.$i));
-            }
+              array_push($month, $request->input('m-'.$i).'-'.$request->input('n-'.$i).'-'. $request->input('c-'.$i));
           }
 
           $task->month                = implode(",", $month);
@@ -136,6 +134,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -162,13 +161,12 @@ class TaskController extends Controller
             'partner_id'         => 'required',
             'fund_source'        => 'required',
             'code_id'               => 'required',
-            'amount'             => 'required',
-            'status'             => 'required'
+            // 'status'             => 'required'
           ];
           $validator = Validator::make($request->all(), $rules);
 
           if ($validator->fails()) {
-              echo 'failed';
+            return response()->json($validator->messages(), 200);
           } else {
             $decrypt_task_id = Helper::decrypt_id($id);
             $task = Task::find($decrypt_task_id);
@@ -183,8 +181,8 @@ class TaskController extends Controller
             $task->deliverables         = $request->input('deliverables');
             $task->fund_source          = $request->input('fund_source');
             $task->code_id              = $request->input('code_id');
-            $task->amount               = $request->input('amount');
-            $task->status               = $request->input('status');
+            $task->unit_cost            = $request->input('unit_cost');
+            // $task->status               = $request->input('status');
             $timeline = [];
             for($i = 1; $i <= 4; $i++) {
               if (  array_key_exists('q-'.$i, $request->all()) ) {
@@ -196,9 +194,7 @@ class TaskController extends Controller
 
             $month = [];
             for($i = 1; $i <= 12; $i++) {
-              if (  array_key_exists('m-'.$i, $request->all()) ) {
-                  array_push($month, $request->input('m-'.$i));
-              }
+                array_push($month, $request->input('m-'.$i).'-'.$request->input('n-'.$i).'-'. $request->input('c-'.$i));
             }
 
             $task->month                = implode(",", $month);

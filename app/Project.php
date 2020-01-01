@@ -15,6 +15,10 @@ class Project extends Model
         return $this->hasMany('App\Task');
     }
 
+    public function risk_logs() {
+        return $this->hasMany('App\RiskLog')->where('active', 1);
+    }
+
     public function owner() {
         return $this->hasOne('App\User', 'id', 'user_id');
     }

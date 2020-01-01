@@ -25,36 +25,23 @@ class ProjectController extends Controller
         $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : '';
         $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
 
-        $p_model = Project::with('activities', 'tasks', 'owner', 'outcomes', 'outcome', 'outputs')->orderBy('id', 'DESC');
-        if( auth()->user()->hasRole('admin') ) {
+        $p_model = Project::with('activities', 'tasks', 'owner', 'outcomes', 'outcome', 'outputs')->where('active', 1)->orderBy('id', 'DESC');
 
-            if(isset($_GET['start_date']) && isset($_GET['end_date']) ) {
+        if(isset($_GET['start_date']) && isset($_GET['end_date']) ) {
+            $projects =  $p_model->where('start_date', '=', $start_date)
+                    ->where('completion_date', '=', $end_date)
+                    ->get();
+        } elseif(isset($_GET['start_date'])) {
+            $projects =  $p_model->orWhere('start_date', '=', $start_date)
+                    ->get();
 
-                $projects =  $p_model->where('start_date', '=', $start_date)
-                        ->where('completion_date', '=', $end_date)
-                        ->get();
-
-            } elseif(isset($_GET['start_date'])) {
-
-                $projects =  $p_model->orWhere('start_date', '=', $start_date)
-                        ->get();
-
-            } elseif(isset($_GET['end_date'])) {
-
-                $projects =  $p_model->orWhere('completion_date', '=', $end_date)
-                        ->get();
-
-            } else {
-
-                $projects =  $p_model->get();
-            }
-
+        } elseif(isset($_GET['end_date'])) {
+            $projects =  $p_model->orWhere('completion_date', '=', $end_date)
+                    ->get();
         } else {
-            $projects = $p_model->where('user_id', auth()->user()->id)
-                      ->where('active', 1)
-                      ->orderBy('id', 'DESC')
-                      ->get();
+            $projects =  $p_model->get();
         }
+
         return view('dashboard.project.index')->with('projects', $projects);
     }
 

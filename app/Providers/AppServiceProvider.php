@@ -44,13 +44,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function get_user_count() {
       if(Auth::check()) {
-        $users = DB::table('users')->count();
+        $users = DB::table('users')->where('active', 1)->count();
         return $users;
       }
     }
 
     public function get_project_count() {
-      $projects = DB::table('projects');
+      $projects = DB::table('projects')->where('active', 1);
         if(Auth::check()) {
           if( auth()->user()->hasRole('admin') ) {
             return $projects->count();
@@ -64,14 +64,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function get_code_count() {
       if(Auth::check()) {
-        $code = DB::table('budget_codes')->count();
+        $code = DB::table('budget_codes')->where('active', 1)->count();
         return $code;
       }
     }
 
     public function get_unit_count() {
       if(Auth::check()) {
-        $unit_measurement = DB::table('unit_measurements')->count();
+        $unit_measurement = DB::table('unit_measurements')->where('active', 1)->count();
         return $unit_measurement;
       }
     }

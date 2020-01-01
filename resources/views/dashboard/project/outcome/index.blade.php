@@ -17,9 +17,9 @@
   @if( !$project->outcomes->isEmpty())
     @php $count = 0; @endphp
     @foreach( $project->outcomes as $outcome )
-      @if($outcome->active == 1 || auth()->user()->hasRole('admin'))
+      @if($outcome->active == 1)
         @php $count++; @endphp
-        <div class="bgc-white p-10 bd mT-5" @if($outcome->active == 0) style="border-color: red!important;" @endif>
+        <div class="bgc-white p-10 bd mT-5">
             <h5 class="lh-1 mB-5 lib"><span class="small bold">{{ $count }}</span>. {{ $outcome->title }}</h5>&nbsp;
             @if ( auth()->user()->hasRole('partner') )
               <a href="{{ action('OutcomeController@partnerShowOutcome', Helper::encrypt_id($outcome->id)) }}?count={{ $count }}" title="View this Outcome"><i class="c-green-500 ti-eye"></i></a>

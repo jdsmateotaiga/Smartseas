@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
 
-
-
   var term = $('.search-result').text();
   term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
   var pattern = new RegExp("("+term+")", "gi");
@@ -12,8 +10,6 @@ $(document).ready(function(){
       src_str = src_str.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
       $(this).html(src_str);
     })
-
-
 
     $('.notifications a.dropdown-toggle').click(function(e){
       var currentToken = $('meta[name="csrf-token"]').attr('content');
@@ -35,15 +31,17 @@ $(document).ready(function(){
       $(this).find('.save').prop('disabled', true);
     });
 
-    $('.close, .modal-footer a').click(function(){
-      $(this).parents('form').trigger("reset");
-      $(this).parents('form').find('textarea').val('');
-    });
+    // $('.close, .modal-footer a').click(function(){
+    //   $(this).parents('form').trigger("reset");
+    //   $(this).parents('form').find('textarea').val('');
+    // });
 
     $('body').click(function(event){
-      if(!$(event.target).closest('.modal').length && !$(event.target).is('.modal')) {
+      if(!$(event.target).closest('.modal').length && !$(event.target).is('.modal') && !$(event.target).is('.remove-risk-level')) {
         $('div[class^="modal"]').find('form').trigger("reset");
         $('div[class^="modal"]').find('form').find('textarea').val('');
+        $('#risk-area').empty();
+        $('#edit_risk-area').empty();
       }
     });
 
@@ -81,6 +79,7 @@ $(document).ready(function(){
                               </div>
                           </div>
                       </div>`;
+             $('.no-remarks').remove();
              $(this).parents('.layers').find('.message-content').append(html);
              $(this).parents('.layers').find('.layer').animate({ scrollTop: $(this).parents('.layers').find('.message-content').height() }, 500);
              $(this).parent().find('textarea').val('');
@@ -173,6 +172,7 @@ $(document).ready(function(){
     $('.modal-edit').click(function(){
         $(this).find('form').trigger("reset");
         $(this).find('form').find('textarea').val('');
+        
         var edit_url   = $(this).data('edit-url'),
             action_url = $(this).data('action-url'),
             target_id  = $(this).data('target');
@@ -182,68 +182,61 @@ $(document).ready(function(){
           url: edit_url,
           success: function(data){
               switch(target_id) {
+                  case '#edit-risk-log':
+                    let keys = Object.keys(data);
+                    for(var x  = 0; x < keys.length; x++) {
+                     $('#edit_risk_'+keys[x]).val(data[keys[x]]);
+                    }
 
+                    let risk_level = data.risk_level.split(',');
+                    console.log(risk_level);
+                    var html = '';
+                    for(var y = 0; y < risk_level.length; y++) {
+                      html += `<div class="risk-container row mB-5">
+                          <div class="col-md-2">
+                              <input type="number" name="risk-year-${y}" class="form-control" min="2010" max="2100" placeholder="Year" required value="${risk_level[y].split('-')[0]}">
+                          </div>
+                          <div class="col-md-3">
+                              <select name="risk-level-${y}" class="form-control risk-level" required>
+                                  <option value="0" ${ (risk_level[y].split('-')[1] == 0) ? 'selected' : '' }>Low</option>
+                                  <option value="1" ${ (risk_level[y].split('-')[1] == 1) ? 'selected' : '' }>Medium</option>
+                                  <option value="2" ${ (risk_level[y].split('-')[1] == 2) ? 'selected' : '' }>High</option>
+                              </select>
+                          </div>
+                          <div class="col-md-2">
+                              <a href="#" class="remove-risk-level">remove</a> 
+                          </div>
+                      </div>`;
+                    }
+                    $('#edit_risk_risk-count').val(risk_level.length);
+                    $('#edit_risk-area').append(html);
+                  break;
                   case '#edit-task':
                     $('#edit_task_title').val(data.title);
                     $('#edit_task_deliverables').val(data.deliverables);
                     $('#edit_task_partner_id').val(data.partner_id);
                     $('#edit_task_fund_source').val(data.fund_source);
                     $('#edit_task_code_id').val(data.code_id);
-                    $('#edit_task_amount').val(data.amount);
+                    $('#edit_task_unit_cost').val(data.unit_cost);
                     $('#edit_task_description').val(data.description);
                     $('#edit_unit_measurement').val(data.unit_measurement);
                     if(data.timeline) {
                       var timeline = data.timeline.split(',');
-                      if(timeline.includes('1')) {
-                        $('#edit_task_q-1').prop('checked', true);
+                      for(var x = 0; x < timeline.length; x++) {
+                          $('#edit_task_q-'+timeline[x]).prop('checked', true);
                       }
-                      if(timeline.includes('2'))  {
-                        $('#edit_task_q-2').prop('checked', true);
-                      }
-                      if(timeline.includes('3'))  {
-                        $('#edit_task_q-3').prop('checked', true);
-                      }
-                      if(timeline.includes('4'))  {
-                        $('#edit_task_q-4').prop('checked', true);
-                      }
-                    }
+                    } 
                     if(data.month) {
                       var month = data.month.split(',');
-                      if(month.includes('Jan')) {
-                        $('#edit_m-1').prop('checked', true);
-                      }
-                      if(month.includes('Feb'))  {
-                        $('#edit_m-2').prop('checked', true);
-                      }
-                      if(month.includes('Mar'))  {
-                        $('#edit_m-3').prop('checked', true);
-                      }
-                      if(month.includes('Apr'))  {
-                        $('#edit_m-4').prop('checked', true);
-                      }
-                      if(month.includes('May'))  {
-                        $('#edit_m-5').prop('checked', true);
-                      }
-                      if(month.includes('Jun'))  {
-                        $('#edit_m-6').prop('checked', true);
-                      }
-                      if(month.includes('Jul'))  {
-                        $('#edit_m-7').prop('checked', true);
-                      }
-                      if(month.includes('Aug'))  {
-                        $('#edit_m-8').prop('checked', true);
-                      }
-                      if(month.includes('Sep'))  {
-                        $('#edit_m-9').prop('checked', true);
-                      }
-                      if(month.includes('Oct'))  {
-                        $('#edit_m-10').prop('checked', true);
-                      }
-                      if(month.includes('Nov'))  {
-                        $('#edit_m-11').prop('checked', true);
-                      }
-                      if(month.includes('Dec'))  {
-                        $('#edit_m-12').prop('checked', true);
+                      for(var y = 0; y < month.length; y++) {
+                        var get_month = month[y].split('-')[0];
+                        var get_count = month[y].split('-')[1];
+                        var get_cost = month[y].split('-')[2];
+                        if(get_month.includes(get_month)) {
+                          $('#edit_m-'+get_month).prop('checked', true);
+                          $('#edit_n-'+get_month).val(get_count);
+                          $('#edit_c-'+get_month).val(get_cost);
+                        }
                       }
                     }
                     break;
@@ -273,6 +266,48 @@ $(document).ready(function(){
               }
           }
         });
+    });
+
+    $('.t-month').click(function(){
+      if( $(this).is(':checked') ) {
+        $(this).next().find('input').prop('required',true);
+      } else {
+        $(this).parent().find('.m-sub input').removeAttr('required');
+      }
+    });
+
+    let count = ($('#edit_risk_risk-count').val()) ? $('#edit_risk_risk-count').val() : 0;
+
+    $('.add-risk-level').on('click', function(e){
+      e.preventDefault();
+      var html = `<div class="risk-container row mB-5">
+                    <div class="col-md-2">
+                        <input type="number" name="risk-year-${count}" class="form-control" min="2010" max="2100" placeholder="Year" required>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="risk-level-${count}" class="form-control risk-level" required>
+                            <option value="0">Low</option>
+                            <option value="1">Medium</option>
+                            <option value="2">High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="remove-risk-level">remove</a> 
+                    </div>
+                </div>`;
+        if( $(this).parents('#edit-risk-log').length == 1 ) {
+          $('#edit_risk_risk-count').val(count+1);
+          $('#edit_risk-area').append(html);
+        } else {
+          $('#risk-count').val(count+1);
+          $('#risk-area').append(html);
+        }
+      count++;
+    });
+
+    $('body, html').on('click', '.remove-risk-level', function(e){
+      e.preventDefault();
+      $(this).parents('.risk-container').remove();
     });
 
 

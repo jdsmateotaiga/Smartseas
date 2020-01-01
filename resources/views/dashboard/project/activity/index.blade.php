@@ -20,9 +20,9 @@
   <div id="activity-container" class="listing mL-20">
   @php $count = 0; @endphp
     @foreach( $output->activities as $activity )
-        @if($activity->active == 1 || auth()->user()->hasRole('admin'))
+        @if($activity->active == 1)
           @php $count++; @endphp
-          <div class="bgc-white p-10 bd mT-5" @if($activity->active == 0) style="border-color: red!important;"" @endif>
+          <div class="bgc-white p-10 bd mT-5">
               <h5 class="lh-1 mB-15 lib">@if(isset($_GET['count']))<span class="small bold">{{ $_GET['count'] }}.{{ $count }}</span>@endif {{ $activity->title }}</h5>
               @if ( auth()->user()->hasRole('partner') )
                 <a href="{{ action('ActivityController@partnerShowActivity', Helper::encrypt_id($activity->id)) }}" title="View this Activity"><i class="c-green-500 ti-eye"></i></a>
@@ -37,17 +37,10 @@
                 data-action-url="{{ action('ActivityController@update', ['id'=> Helper::encrypt_id($activity->id) ])}}">
                   <i class="c-blue-500 ti-pencil-alt"></i>
                 </a>
-                @if($activity->active == 1)
-                  <form style="display: inline-block; vertical-align: middle;" action="{{ action('ActivityController@deactivate', [ 'id'=> Helper::encrypt_id($activity->id)] )}}" method="post">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-danger del"  onclick="return confirm('Are you sure you want to remove this activity?');"><i class="ti-trash"></i></button>
-                  </form>
-                @elseif($activity->active == 0)
-                  <form style="display: inline-block; vertical-align: middle;" action="{{ action('ActivityController@activate', [ 'id'=> Helper::encrypt_id($activity->id)] )}}" method="post">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-success act"  onclick="return confirm('Are you sure you want to activate this activity?');"><i class="c-green-500 ti-check"></i></button>
-                  </form>
-                @endif
+                <form style="display: inline-block; vertical-align: middle;" action="{{ action('ActivityController@deactivate', [ 'id'=> Helper::encrypt_id($activity->id)] )}}" method="post">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-danger del"  onclick="return confirm('Are you sure you want to remove this activity?');"><i class="ti-trash"></i></button>
+                </form>
               @endif
               <div class="row">
                   <p class="col-sm-6 mB-0"><strong>Deliverables: </strong> {{ $activity->deliverables }}</p>

@@ -4,6 +4,7 @@
 .fR { float: right; }
 .ls-0 { letter-spacing: 0; }
 .fwN { font-weight: normal; }
+label { font-weight: bold!important;}
 
 .danger { color: red; }
 
@@ -135,19 +136,43 @@ p.image_approve {
   box-shadow: none!important;
 }
 
-select option[value="low"] {
+.risk-table th {
+    vertical-align: middle!important;
+    padding: 5px!important;
+}
+
+.risk-level {
+    width: 100%;
+}
+
+.bg-0,
+.risk-level option[value="0"] {
     background: #4F6228;
     color: #f1f1f1;
 }
 
-select option[value="medium"] {
+.bg-1,
+.risk-level option[value="1"] {
     background: #FFFF00;
     color: #f1f1f1;
 }
 
-select option[value="high"] {
+.bg-2,
+.risk-level option[value="2"] {
     background: #FF0000;
     color: #f1f1f1;
+}
+
+.td-max {
+    position: relative;
+}
+
+.td-max span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .chip {
@@ -265,8 +290,13 @@ a.btn {
     padding: 10px;
 }
 
-#create-task .modal-dialog {
-    max-width: 600px!important;
+.modal-dialog {
+    max-width: 900px!important;
+}
+
+.modal-dialog h6 {
+    font-size: 105%;
+    font-weight: bold;
 }
 
 span.small {
@@ -281,11 +311,15 @@ span.small.bold {
 .month-table {
     display: none;
     margin-top: 10px;
+} 
+
+.timeline input[type="checkbox"] {
+    outline: none;
+    box-shadow: none!important;
 }
 
-.timeline label {
-    width: 100%;
-    text-align: center;
+.timeline .form-group > input {
+    width: auto;
 }
 
 .timeline .form-group input:checked + .month-table {
@@ -297,9 +331,26 @@ span.small.bold {
     text-align: left;
 }
 
-.month-table input {
-    width: auto;
+.month-table .m-sub {
+    display: none;
+    width: 65%;
 }
+
+.month-table input[type="checkbox"]:checked + .m-sub {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.month-table input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+}
+
+.month-table input[type="number"] {
+    margin-bottom: 5px;
+}
+
 
 .month-table tr td:last-child {
     padding-left: 15px;

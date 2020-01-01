@@ -20,8 +20,8 @@
 @if( !$activity->get_tasks()->isEmpty() )
 <div id="task-container" class="mL-20">
     @foreach( $activity->get_tasks() as $task )
-      @if($task->active == 1 || auth()->user()->hasRole('admin'))
-        <div id="AC{{ $task->id }}" class="task-list toggle-parent mB-0 bgc-white p-10 bd mT-5" style="@if( $task->progress == 100 ) border: 2px solid green; box-sizing: border-box; @endif @if($task->active == 0) border-color: red!important; @endif">
+      @if($task->active == 1)
+        <div id="AC{{ $task->id }}" class="task-list toggle-parent mB-0 bgc-white p-20 bd mT-5" style="@if( $task->progress == 100 ) border: 2px solid green; box-sizing: border-box; @endif @if($task->active == 0) border-color: red!important; @endif">
             <h6 class="lh-1 mB-0">
               <a href="#" class="toggle-class"><strong>{{ Helper::the_excerpt($task->title, 50) }} </strong></a>
               @if( !auth()->user()->hasRole('partner') )
@@ -33,17 +33,10 @@
                 data-action-url="{{ action('TaskController@update', ['id'=> Helper::encrypt_id($task->id) ])}}">
                   <i class="c-blue-500 ti-pencil-alt"></i>
                 </a>
-                @if($task->active == 1)
                 <form style="display: inline-block; vertical-align: middle;" action="{{ action('TaskController@deactivate', [ 'id'=> Helper::encrypt_id($task->id)] )}}" method="post">
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-danger del"  onclick="return confirm('Are you sure you want to remove this task?');"><i class="ti-trash"></i></button>
                 </form>
-                @elseif($task->active == 0)
-                <form style="display: inline-block; vertical-align: middle;" action="{{ action('TaskController@activate', [ 'id'=> Helper::encrypt_id($task->id)] )}}" method="post">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-success act"  onclick="return confirm('Are you sure you want to activate this task?');"><i class="c-green-500 ti-check"></i></button>
-                </form>
-                @endif
               @endif
               <div class="mT-5">
                   <span class="ls-0 fwN">
@@ -58,9 +51,9 @@
                         Largely
                       @endif
                   </span>|
-                  <span class="ls-0 fwN st-{{ $task->status }}">
+                  <!-- <span class="ls-0 fwN st-{{ $task->status }}">
                       Status<span class="chip mL-5"></span>
-                  </span>
+                  </span> -->
               </div>
             </h6>
             <div class="task-area toggle-area mT-15">
@@ -70,22 +63,10 @@
                     <p class="col-md-12 mB-0"><strong>Responsible Partner:</strong> {{ $task->user->partner_code }} | {{ $task->user->partner_name }}</p>
                     <p class="col-md-12 mB-0"><strong>Code:</strong> {{ $task->budget_code->code }} - {{ $task->budget_code->description }}</p>
                     <p class="col-md-12 mB-0"><strong>Fund Source:</strong> {{ $task->fund_source }}</p>
-                    <p class="col-md-12 mB-0"><strong>Amount:</strong> {{ $task->amount }}</p>
-                    <p class="col-md-12 mB-0 st-{{ $task->status }}"><strong>Task Status:</strong> <span>{{ ucfirst($task->status) }}</span><span class="chip mL-5"></span></p>
+                    <!-- <p class="col-md-12 mB-0 st-{{ $task->status }}"><strong>Task Status:</strong> <span>{{ ucfirst($task->status) }}</span><span class="chip mL-5"></span></p> -->
                     <p class="col-md-12 mB-0"><strong>Unit of Measurement:</strong> {{ $task->unit_of_measurement->unit }} - {{ $task->unit_of_measurement->unit }}</p>
+                    <p class="col-md-12 mB-0"><strong>Unit Cost:</strong> {{ number_format((double)$task->unit_cost, 2, '.', ',') }}</p>
                   </div>
-                  <div class="row">
-                    @php
-                      $quarter = explode(',', $task->timeline);
-                    @endphp
-                    <p class="col-md-12 mB-0"><strong>Timeline (Quarter): </strong></p>
-                    <p class="col-md-3 mB-0"><span class="timeline-bar @if( in_array('1', $quarter) ) active @endif">1st</span></p>
-                    <p class="col-md-3 mB-0"><span class="timeline-bar @if( in_array('2', $quarter) ) active @endif">2nd</span></p>
-                    <p class="col-md-3 mB-0"><span class="timeline-bar @if( in_array('3', $quarter) ) active @endif">3rd</span></p>
-                    <p class="col-md-3 mB-0"><span class="timeline-bar @if( in_array('4', $quarter) ) active @endif">4th</span></p>
-                    <p class="col-md-12 mB-10"><strong>Months:</strong> {{ $task->month }}</p>
-                  </div>
-
                   <div class="peers ai-sb fxw-nw mB-0">
                       <div class="pY-5">
                           <strong>Work Progress</strong>
@@ -152,6 +133,80 @@
                 <div class="col-md-6">
                   <p><strong>Remarks from responsible partner:</strong></p>
                   @include('dashboard.project.task.remarks')
+                </div>
+                <div class="col-md-12 mT-30">
+                  <strong>Physical and Financial Target</strong>
+                </div>
+
+                <div class="col-md-10 mT-10">
+                  <div class="row">
+                      @php
+                        $quarter = explode(',', $task->timeline);
+                      @endphp
+                      <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('1', $quarter) ) active @endif">1st</span></p>
+                      <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('2', $quarter) ) active @endif">2nd</span></p>
+                      <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('3', $quarter) ) active @endif">3rd</span></p>
+                      <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('4', $quarter) ) active @endif">4th</span></p>
+                  </div>
+                  
+                  <div class="row">
+                      @php
+                        $count = -1;
+      
+                        $month = explode(',', $task->month);
+                        $blocks = array_chunk($month, 3); 
+                        $total_month = 0;
+                        $total_amount = 0;
+                        $total_month_count = 0;
+                        $month_for_label = ['Jan','Feb','Mar','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+                      @endphp
+                      @foreach($blocks as $item)
+                          <div class="col-md-3 pL-5 pR-5">
+                            <div class="row m-0">
+                            @foreach ($item as $label)
+                              @php $count++; @endphp
+                             <div class="col-md-4 p-0 bd text-center mB-10"> 
+                                <div class="col-md-12 bd pT-5 pB-5 text-center"><strong> @php echo $month_for_label[$count] @endphp</strong></div>
+                                <div class="bd">
+                                  @php 
+                                    $label = explode('-', $label);
+                                    $month_active =  ($label[0]) ? 1 : 0;
+                                    $cost = isset($label[2]) ? $label[2] : '&nbsp;';
+                                    $month_count = 
+                                    
+                                    $mon = ($label[1]) ?  '<span style="background-color: yellow; display: block;">'.$label[1].'</span>' : '&nbsp;';
+                                    echo  $mon. '<hr class="mT-0 mB-5 ">'.number_format((double)$cost, 2, '.', ',');
+
+                            
+                                    $total_month_count = $total_month_count + (double)$label[1];
+                                    $total_amount = $total_amount + (double)$cost;
+                                  @endphp 
+                                </div>
+                              </div>
+                            @endforeach 
+                            </div>
+                          </div>
+                      @endforeach
+                      
+                  </div>
+                </div>
+                <div class="col-md-2 mT-10">
+                    <div class="row">
+                      <p class="col-md-12"><span class="timeline-bar"><strong>Total</strong></span></p>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12  text-center">
+                        <div class="row m-0">
+                          <div class="col-md-12 bd pT-5 pB-5 text-center">&nbsp;</div>
+                          <div class="bd w-100">
+                          <strong>{{ $total_month_count }}</strong>
+                          <hr class="mT-0 mB-5 ">
+                          <strong>{{ number_format((double)$total_amount, 2, '.', ',') }}</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

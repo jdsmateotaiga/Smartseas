@@ -17,17 +17,6 @@
             <i class="c-blue-500 ti-pencil-alt"></i>
           </a>
           @include('dashboard.project.output.edit')
-          @if($output->active == 1)
-          <form style="display: inline-block; vertical-align: middle;" action="{{ action('OutputController@deactivate', [ 'id'=> Helper::encrypt_id($output->id)] )}}" method="post">
-              {{ csrf_field() }}
-              <button type="submit" class="btn btn-danger del"  onclick="return confirm('Are you sure you want to remove this output?');"><i class="ti-trash"></i></button>
-          </form>
-          @elseif($output->active == 0)
-          <form style="display: inline-block; vertical-align: middle;" action="{{ action('OutputController@activate', [ 'id'=> Helper::encrypt_id($output->id)] )}}" method="post">
-              {{ csrf_field() }}
-              <button type="submit" class="btn btn-success act"  onclick="return confirm('Are you sure you want to activate this output?');"><i class="c-green-500 ti-check"></i></button>
-          </form>
-          @endif
         @endif
    </div>
     <div class="row">

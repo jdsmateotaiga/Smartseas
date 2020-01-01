@@ -18,17 +18,6 @@
             <i class="c-blue-500 ti-pencil-alt"></i>
           </a>
           @include('dashboard.project.outcome.edit')
-          @if($outcome->active == 1)
-          <form style="display: inline-block; vertical-align: middle;" action="{{ action('OutcomeController@deactivate', [ 'id'=> Helper::encrypt_id($outcome->id)] )}}" method="post">
-              {{ csrf_field() }}
-              <button type="submit" class="btn btn-danger del" title="Dectivate this Outcome"  onclick="return confirm('Are you sure you want to remove this outcome?');"><i class="ti-trash"></i></button>
-          </form>
-          @else($outcome->active == 0)
-          <form style="display: inline-block; vertical-align: middle;" action="{{ action('OutcomeController@activate', [ 'id'=> Helper::encrypt_id($outcome->id)] )}}" method="post">
-              {{ csrf_field() }}
-              <button type="submit" class="btn btn-success act" title="Activate this Outcome"  onclick="return confirm('Are you sure you want to activate this outcome?');"><i class="c-green-500 ti-check"></i></button>
-          </form>
-          @endif
         @endif
    </div>
     <div class="row">

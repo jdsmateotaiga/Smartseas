@@ -27,6 +27,10 @@ use App\User;
     Route::post('notification/update', 'NotificationController@update')->name('notification.update');
     Route::get('search', 'SearchController@query')->name('search.query');
 
+    Route::resource('risklog', 'RiskLogController');
+    Route::post('risklog/activate/{id}', 'RiskLogController@activate');
+    Route::post('risklog/deactivate/{id}', 'RiskLogController@deactivate');
+
     Route::group(['middleware' => 'roles', 'roles'=>['partner']], function () {
       Route::get('project/partner/{id}', 'ProjectController@partnerShowProject');
       Route::get('project/outcome/partner/{id}', 'OutcomeController@partnerShowOutcome');

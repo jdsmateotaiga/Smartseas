@@ -57,17 +57,6 @@
             <i class="c-blue-500 ti-pencil-alt"></i>
         </a>
         @include('dashboard.project.activity.edit')
-        @if($activity->active == 1)
-            <form style="display: inline-block; vertical-align: middle;" action="{{ action('ActivityController@deactivate', [ 'id'=> Helper::encrypt_id($activity->id)] )}}" method="post">
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-danger del"  onclick="return confirm('Are you sure you want to remove this activity?');"><i class="ti-trash"></i></button>
-            </form>
-        @elseif($activity->active == 0)
-            <form style="display: inline-block; vertical-align: middle;" action="{{ action('ActivityController@activate', [ 'id'=> Helper::encrypt_id($activity->id)] )}}" method="post">
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-success act"  onclick="return confirm('Are you sure you want to activate this activity?');"><i class="c-green-500 ti-check"></i></button>
-            </form>
-        @endif
         @endif
    </div>
     <div class="row">

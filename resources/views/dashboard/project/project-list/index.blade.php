@@ -1,7 +1,7 @@
 
 @foreach( $projects as $project )
     <div class="col-md-4 workplan-list">
-        <div class="layers bd bgc-white pB-20 pL-20 pR-20" @if( $project->active == 0 ) style="border-color: red!important;" @endif>
+        <div class="layers bd bgc-white pB-20 pL-20 pR-20">
             <div class="controls mT-5 mB-5">
               @if ( auth()->user()->hasRole('partner') )
                 <a href="{{ action('ProjectController@partnerShowProject', Helper::encrypt_id($project->id)) }}" title="View this Project"><i class="c-green-500 ti-eye"></i></a>
@@ -15,11 +15,10 @@
                        {{ csrf_field() }}
                        <button type="submit" class="btn btn-danger" title="Remove this project"  onclick="return confirm('Are you sure you want to remove this project?');"><i class="ti-trash"></i></button>
                  </form>
-                 @elseif($project->active == 0)
-                 <form style="display: inline-block; vertical-align: middle;" action="{{ action('ProjectController@activate', [ 'id'=> Helper::encrypt_id($project->id)] )}}" method="post">
+                 <!-- <form style="display: inline-block; vertical-align: middle;" action="{{ action('ProjectController@activate', [ 'id'=> Helper::encrypt_id($project->id)] )}}" method="post">
                        {{ csrf_field() }}
                        <button type="submit" class="btn btn-success" title="Activate this project"  onclick="return confirm('Are you sure you want to activate this project?');"><i class="c-green-500 ti-check"></i></button>
-                 </form>
+                 </form> -->
                  @endif
               @endif
             </div>
@@ -90,17 +89,17 @@
                                   @if(!$project->tasks->isEmpty())
                                     @foreach($project->tasks as $task)
                                       @if($task->active == 1 || auth()->user()->hasRole('admin'))
-                                      <div class="col-md-6 mB-5">
+                                      <div class="col-md-12 mB-5">
                                         <p class="bd pL-10 pR-10 pT-5 pB-5 mB-0
                                           st-{{ $task->status }}
                                           "
                                           @if( $task->progress == 100 ) style="border: 1px solid green" @endif>
                                           @if ( auth()->user()->hasRole('partner') )
-                                            <a href="{{ action('ActivityController@partnerShowActivity', Helper::encrypt_id($task->activity_id)) }}#AC{{$task->id}}">{{ $task->user->partner_code }}</a>
+                                            <a href="{{ action('ActivityController@partnerShowActivity', Helper::encrypt_id($task->activity_id)) }}#AC{{$task->id}}">{{ $task->title }}</a>
                                           @else
-                                            <a href="{{ route('activity.show', ['id' => Helper::encrypt_id($task->activity_id)]) }}#AC{{$task->id}}">{{ $task->user->partner_code }}</a>
+                                            <a href="{{ route('activity.show', ['id' => Helper::encrypt_id($task->activity_id)]) }}#AC{{$task->id}}">{{ $task->title }}</a>
                                           @endif
-                                          <span style="float: right;"><span class="chip"></span> {{ $task->progress }}%</span>
+                                          <!-- <span style="float: right;"><span class="chip"></span> {{ $task->progress }}%</span> -->
                                         </p>
                                       </div>
                                       @endif

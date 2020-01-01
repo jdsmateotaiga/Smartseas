@@ -26,7 +26,7 @@
                 </div>
               @endforeach
             @else
-              No remarks available.
+              <p class="no-remarks">No remarks available.</p>
             @endif
         </div>
     </div>
