@@ -25,7 +25,7 @@
     </style>
   </head>
   <body id="report">
-      <div class="navigation" style="display: none;">
+      <div class="navigation">
         <ul class="clearfix">
           <li class="active"><a href="#sheet1">AWP</a></li>
           <li><a href="#sheet2">DETAILED AWP</a></li>
@@ -33,12 +33,12 @@
           <li><a href="#sheet4">RISK LOG</a></li>
         </ul>
       </div>
-      <!-- @include('dashboard.report.info'); -->
+      @include('dashboard.report.info');
       <div id="excel">
-        <div class="sheet" id="sheet1">
+        <div class="sheet active" id="sheet1">
           @include('dashboard.report.awp')
         </div>
-        <div class="sheet active" id="sheet2">
+        <div class="sheet" id="sheet2">
           @include('dashboard.report.detail')
         </div>
         <div class="sheet" id="sheet3">

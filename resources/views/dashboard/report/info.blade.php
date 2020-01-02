@@ -1,3 +1,4 @@
+<div style="padding: 0 20px;">
 <h3>{{ $project->title }}</h3>
 <table id="report_detail" style="margin-bottom: 1em;">
   <tr>
@@ -33,3 +34,4 @@
     <td>{{ $project->objective }}</td>
   </tr>
 </table>
+</div>

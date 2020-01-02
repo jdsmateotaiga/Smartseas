@@ -408,7 +408,7 @@ body .main-content {
 }
 
 #report_detail th { vertical-align: top; }
-/* #report { margin-top :140px; } */
+#report { margin-top :100px; }
 #report a { color: inherit; }
 #report .navigation { position: fixed; z-index: 2; top: 0; left: 0; right: 0; background-color: #fff; -webkit-box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); -moz-box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); }
 #report .navigation ul li { float: left; width: 25%; text-align: center; list-style-type: none; }

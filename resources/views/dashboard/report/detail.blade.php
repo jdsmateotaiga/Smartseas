@@ -79,14 +79,49 @@
                 <th>N</th>
                 <th>D</th>
               </tr>
+              <tr>
+                <td colspan=34 style="background-color: #fbd1a2; color: #000; padding: 7px 10px;">
+                  <a href="{{ route('activity.show', ['id'=> Helper::encrypt_id($activity->id)]) }}">
+                    Activity {{ $outcome_count }}.{{ $output_count }}.{{ $activity_count }} {{ $activity->title }}
+                  </a>
+                </td>
+              </tr>
             </thead>
+            <tbody>
+              @foreach($activity->tasks as $task)
+              <tr>
+                <td>{{ $task->title }}</td>
+                <td>{{ $task->deliverables }}</td>
+                <td>{{ $task->unit_of_measurement->unit }}</td>
+                @php
+                  $month_count_cost = explode(',', $task->month);  
+                  $total_count = 0;
+                  $total_cost = 0;
+                @endphp
+                @foreach($month_count_cost as $item)
+                  @php $total_count = $total_count + (double)explode('-', $item)[1]; @endphp
+                  <td class="text-center">{{ explode('-', $item)[1] }}</td>
+                @endforeach
+                <td class="text-center">{{ $total_count }}</td>
+                <td class="text-center">{{ $task->user->partner_code }}</td>
+                <td class="text-center">{{ $task->fund_source }}</td>
+                <td class="text-center">{{ $task->budget_code->code }}</td>
+                <td class="text-center">{{ $task->budget_code->description }}</td>
+                <td class="text-center">{{ $task->unit_cost }}</td>
+                @foreach($month_count_cost as $item)
+                  @php
+                    $total_cost = $total_cost + (double)explode('-', $item)[2];
+                    $cost_per_month = number_format((double)explode('-', $item)[2], 2, '.', ',')
+                  @endphp
+                  <td class="text-center">@if($cost_per_month != 0) {{ $cost_per_month }}  @endif</td>
+                @endforeach
+                <td class="text-center fW-b">{{  number_format($total_cost, 2, '.', ',') }}</td>
+              </tr>
+              @endforeach
+            </tbody>
           </table>
           </div>
-          <p style="background-color: #fbd1a2; color: #000; padding: 7px 10px;" class="mB-0">Activity {{ $outcome_count }}.{{ $output_count }}.{{ $activity_count }}
-            <a href="{{ route('activity.show', ['id'=> Helper::encrypt_id($activity->id)]) }}">
-              {{ $activity->title }}
-            </a>
-          </p>
+
           @endforeach
       @endforeach
     </div>
