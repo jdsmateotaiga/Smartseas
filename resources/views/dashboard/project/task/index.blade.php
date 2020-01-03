@@ -148,13 +148,13 @@
                       <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('3', $quarter) ) active @endif">3rd</span></p>
                       <p class="col-md-3 pL-5 pR-5"><span class="timeline-bar @if( in_array('4', $quarter) ) active @endif">4th</span></p>
                   </div>
-                  
+
                   <div class="row">
                       @php
                         $count = -1;
-      
+
                         $month = explode(',', $task->month);
-                        $blocks = array_chunk($month, 3); 
+                        $blocks = array_chunk($month, 3);
                         $total_month = 0;
                         $total_amount = 0;
                         $total_month_count = 0;
@@ -166,29 +166,26 @@
                             <div class="row m-0">
                             @foreach ($item as $label)
                               @php $count++; @endphp
-                             <div class="col-md-4 p-0 bd text-center mB-10"> 
-                                <div class="col-md-12 bd pT-5 pB-5 text-center"><strong> @php echo $month_for_label[$count] @endphp</strong></div>
+                             <div class="col-md-4 p-0 text-center mB-10">
+                                <div class="col-md-12 pT-5 pB-5 text-center"><strong> @php echo $month_for_label[$count] @endphp</strong></div>
                                 <div class="bd">
-                                  @php 
+                                  @php
                                     $label = explode('-', $label);
                                     $month_active =  ($label[0]) ? 1 : 0;
                                     $cost = isset($label[2]) ? $label[2] : '&nbsp;';
-                                    $month_count = 
-                                    
+                                    $month_count =
                                     $mon = ($label[1]) ?  '<span style="background-color: yellow; display: block;">'.$label[1].'</span>' : '&nbsp;';
                                     echo  $mon. '<hr class="mT-0 mB-5 ">'.number_format((double)$cost, 2, '.', ',');
-
-                            
                                     $total_month_count = $total_month_count + (double)$label[1];
                                     $total_amount = $total_amount + (double)$cost;
-                                  @endphp 
+                                  @endphp
                                 </div>
                               </div>
-                            @endforeach 
+                            @endforeach
                             </div>
                           </div>
                       @endforeach
-                      
+
                   </div>
                 </div>
                 <div class="col-md-2 mT-10">
@@ -198,7 +195,7 @@
                     <div class="row">
                       <div class="col-md-12  text-center">
                         <div class="row m-0">
-                          <div class="col-md-12 bd pT-5 pB-5 text-center">&nbsp;</div>
+                          <div class="col-md-12 pT-5 pB-5 text-center">&nbsp;</div>
                           <div class="bd w-100">
                           <strong>{{ $total_month_count }}</strong>
                           <hr class="mT-0 mB-5 ">

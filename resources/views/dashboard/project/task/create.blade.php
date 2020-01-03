@@ -72,7 +72,7 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                           <label for="q-1">Quarter 1</label>
-                          <input type="checkbox" class="form-control" id="q-1" name="q-1" value="1">
+                          <input type="checkbox" class="form-control t-quarter" id="q-1" name="q-1" value="1">
                           <table class="month-table">
                             <tr>
                                 <td width="10%"><label for="m-1">Jan</label></td>
@@ -110,7 +110,7 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                           <label for="q-2">Quarter 2</label>
-                          <input type="checkbox" class="form-control" id="q-2" name="q-2" value="2">
+                          <input type="checkbox" class="form-control t-quarter" id="q-2" name="q-2" value="2">
                           <table class="month-table">
                             <tr>
                                 <td width="10%"><label for="m-4">Apr</label></td>
@@ -148,7 +148,7 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                           <label for="q-3">Quarter 3</label>
-                          <input type="checkbox" class="form-control" id="q-3" name="q-3" value="3">
+                          <input type="checkbox" class="form-control t-quarter" id="q-3" name="q-3" value="3">
                           <table class="month-table">
                             <tr>
                                 <td width="10%"><label for="m-7">Jul</label></td>
@@ -186,7 +186,7 @@
                   <div class="col-sm-6">
                       <div class="form-group">
                           <label for="q-4">Quarter 4</label>
-                          <input type="checkbox" class="form-control" id="q-4" name="q-4" value="4">
+                          <input type="checkbox" class="form-control t-quarter" id="q-4" name="q-4" value="4">
                           <table class="month-table">
                             <tr>
                                 <td width="10%"><label for="m-10">Oct</label></td>

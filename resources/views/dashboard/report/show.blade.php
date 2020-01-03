@@ -3,139 +3,60 @@
   <head>
     <meta charset="utf-8">
     <title>{{ $project->title }}</title>
+    <style>#loader{transition:all .3s ease-in-out;opacity:1;visibility:visible;position:fixed;height:100vh;width:100%;background:#fff;z-index:90000}#loader.fadeOut{opacity:0;visibility:hidden}.spinner{width:40px;height:40px;position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);background-color:#333;border-radius:100%;-webkit-animation:sk-scaleout 1s infinite ease-in-out;animation:sk-scaleout 1s infinite ease-in-out}@-webkit-keyframes sk-scaleout{0%{-webkit-transform:scale(0)}100%{-webkit-transform:scale(1);opacity:0}}@keyframes sk-scaleout{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}</style>
+    <link rel="shortcut icon" type="image/png" href="{{ URL::to('/')}}/images/smartseas-logo.jpg"/>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <style media="screen">
-      body {
-        font-family:sans-serif;
-        font-size: 14px;
-      }
-      th,td {
-        padding: 5px 2px;
-      }
-      th {
-        text-align: left;
-        vertical-align: top;
-      }
-      p {
-        margin: 0;
-      }
-      #activities table, #activities td, #activities th {
+      .clearfix:before, .clearfix:after {display: table; content: '';}
+      .clearfix:after {clear:both;}
+      table, td, th {
         border: 1px solid black;
         padding: 5px;
       }
       table {
         border-collapse: collapse;
       }
-      #activities th {
+      th {
         text-align: center;
         vertical-align: middle;
       }
+
     </style>
   </head>
-  <body>
-    <h3>{{ $project->title }}</h3>
-    <table style="margin-bottom: 1em;">
-        <tr>
-          <th>Project ID: </th>
-          <td>{{ $project->project_id }}</td>
-        </tr>
-        <tr>
-          <th>Award ID:</th>
-          <td>{{ $project->award_id }}</td>
-        </tr>
-        <tr>
-          <th>Responsible Partners:</th>
-          <td>
-            @foreach($users as $partner)
-              {{ $partner->partner_name }}<br>
-            @endforeach
-          </td>
-        </tr>
-        <tr>
-          <th>Start Date: </th>
-          <td>{{ $project->start_date }}</td>
-        </tr>
-        <tr>
-          <th>Completion Date:</th>
-          <td>{{ $project->completion_date }}</td>
-        </tr>
-        <tr>
-          <th>Implementing Partner:</th>
-          <td>{{ $project->implementing_partner }}</td>
-        </tr>
-        <tr>
-          <th>Project Objective:</th>
-          <td>{{ $project->objective }}</td>
-        </tr>
-      </table>
-<div style="width: 100%;">
-  @php $outcome_count = 0; @endphp
-  @foreach($project->outcomes as $outcome)
-  @php $outcome_count++; @endphp
-  <div>
-    <p style="background-color: #000; color: #fff; padding: 7px 10px;">Outcome {{ $outcome_count }}. {{ $outcome->title }}</p>
-    @php $output_count = 0; @endphp
-    @foreach($outcome->outputs as $output)
-      @php $output_count++; @endphp
-      <p style="background-color: #008000; color: #fff; padding: 7px 10px;">Output {{ $outcome_count }}.{{ $output_count }} {{ $output->title }}</p>
-      <table id="activities" width="100%">
-        <tr>
-          <th colspan=6>Planned Activities</th>
-          <th colspan=5>Planned Budget</th>
-        </tr>
-        <tr>
-          <th colspan=2>Activity/Sub-Activity</th>
-          <th colspan=4>TIMEFRAME</th>
-          <th rowspan=2>Responsible Party</th>
-          <th rowspan=2>Funding Source</th>
-          <th colspan=2>Budget</th>
-          <th>Amount</th>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <th>Deliverables</th>
-          <th>Q1</th>
-          <th>Q2</th>
-          <th>Q3</th>
-          <th>Q4</th>
-          <th>Code</th>
-          <th>Description</th>
-          <th>USD</th>
-        </tr>
-        @php $activity_count = 0; @endphp
-        @foreach($output->activities as $activity)
-        @php $activity_count++; @endphp
-          <tr>
-              <td rowspan={{ $activity->tasks->count() + 1 }}>Activity {{ $outcome_count }}.{{ $output_count }}.{{ $activity_count }} {{ $activity->title }}</td>
-              <td rowspan={{ $activity->tasks->count() + 1 }}>{{ $activity->deliverables }}</td>
-          </tr>
-          @foreach($activity->tasks as $task)
-            <tr>
-              @php
-                $quarter = explode(',', $task->timeline);
-              @endphp
-              <th style="@if( in_array('1', $quarter) ) background-color: yellow @endif">&nbsp;</th>
-              <th style="@if( in_array('2', $quarter) ) background-color: yellow @endif">&nbsp;</th>
-              <th style="@if( in_array('3', $quarter) ) background-color: yellow @endif">&nbsp;</th>
-              <th style="@if( in_array('4', $quarter) ) background-color: yellow @endif">&nbsp;</th>
-              <td align="center">{{ $task->user->partner_code }}</td>
-              <td align="center">{{ $task->fund_source }}</td>
-              <td align="center">{{ $task->code->code }}</td>
-              <td align="center">{{ $task->description }}</td>
-              <td align="center">{{ $task->amount }}</td>
-            </tr>
-          @endforeach
-
-        @endforeach
-
-      </table>
-
-
-
-
-    @endforeach
-  </div>
-  @endforeach
-</div>
-
+  <body id="report">
+      <div class="navigation" style="display: none;">
+        <ul class="clearfix">
+          <li class="active"><a href="#sheet1">AWP</a></li>
+          <li><a href="#sheet2">DETAILED AWP</a></li>
+          <li><a href="#sheet3">SUMMARY</a></li>
+          <li><a href="#sheet4">RISK LOG</a></li>
+        </ul>
+      </div>
+      <!-- @include('dashboard.report.info'); -->
+      <div id="excel">
+        <div class="sheet" id="sheet1">
+          @include('dashboard.report.awp')
+        </div>
+        <div class="sheet active" id="sheet2">
+          @include('dashboard.report.detail')
+        </div>
+        <div class="sheet" id="sheet3">
+          @include('dashboard.report.summary')
+        </div>
+        <div class="sheet" id="sheet4">
+          @include('dashboard.report.risklog')
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('js/bundle.js') }}"></script>
+      <script type="text/javascript">
+        $('.navigation ul li a').click(function(e){
+          e.preventDefault();
+          $(this).parent().addClass('active').siblings().removeClass('active');
+          $( $(this).attr('href') ).addClass('active').siblings().removeClass('active');
+        });
+      </script>
   </body>
 </html>

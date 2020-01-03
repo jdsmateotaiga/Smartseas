@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2019 at 01:48 AM
+-- Generation Time: Jan 03, 2020 at 01:31 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -49,7 +49,8 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `title`, `description`, `deliverables`, `start_date`, `end_date`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, 'Development of MPAN Planning tool', NULL, 'MPAN planning tool kit which includes guidelines on establishment and enhancement in three project sites and Monitoring & Evaluation (M&E) system', '2015', '2015', 1, '2019-12-28 13:37:43', '2019-12-28 13:37:43');
+(1, 1, 1, 1, 1, 'Development of MPAN Planning tool', NULL, 'MPAN planning tool kit which includes guidelines on establishment and enhancement in three project sites and Monitoring & Evaluation (M&E) system', '2015', '2015', 1, '2019-12-28 13:37:43', '2019-12-28 13:37:43'),
+(2, 1, 1, 2, 2, 'Conduct of workshop/training on MPA costing (i.e.training of trainors)', NULL, 'Benchmark management costs established for MPAs of varying size size (<5ha, <50ha, <250ha and >250ha)', '2017', '2017', 1, '2020-01-03 14:05:41', '2020-01-03 14:05:41');
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,9 @@ INSERT INTO `notifications` (`id`, `user_id`, `to_user_id`, `body`, `url`, `stat
 (6, 1, '28', 'You has been added in new project \"Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas\"', '/project/partner/eyJpdiI6ImVnOCtDcXRzU05GY3BITWFuTTJQS1E9PSIsInZhbHVlIjoiWEJxbFhXRmN0V0ZtV1J1T2pMb05FUT09IiwibWFjIjoiNjBjMzZmMjg2ODFjYmI3MzlmMTJjMTEzM2ZiMDQ1N2IxN2I1M2M2MWZlNjBhZTc3MDk0Yjk4MDQzNjU1MWJiNyJ9', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59'),
 (7, 1, '29', 'You has been added in new project \"Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas\"', '/project/partner/eyJpdiI6Ik1JdnVXNzBkdXhwcG5jSnRwbXRyUkE9PSIsInZhbHVlIjoiTjg0YkxBS0c4NFpWZ29RbU0rMnpHdz09IiwibWFjIjoiYzhiMjNmODBlMGNjOTMxYzBkZDhkZWI4MjMyMjRjYzljMzk5YzUyYWJlMGIzNDhjYjMyZjQ0Y2I3YTE3MzIwNCJ9', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59'),
 (8, 1, '30', 'You has been added in new project \"Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas\"', '/project/partner/eyJpdiI6InliTVVtejJuTkQ0MXZZZjlrU1g1NGc9PSIsInZhbHVlIjoiZFNZTXRFdFBqSDJERkM0b1RXRXhzUT09IiwibWFjIjoiYWU1YThjMGY1MWQ4ZjQwYjFhODdjYWI2YjhiMWQyODkwNjJhZmYzODJhZDc5OWUwNjY3YTVhNTczNGIyNTY0OCJ9', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59'),
-(9, 1, '23', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6InZCU3ROM1dJVlB1MVU4OUdSRVNmREE9PSIsInZhbHVlIjoiNU9qTTg5TkdBb1VLNGRDQ2ZpQWdzUT09IiwibWFjIjoiYTRhZGQzNGZmMDE1ZGMxNmI2OGFjOGVmNWExYTY0YjUwMTVlZGYxNTBiYWUzZDdlMzA2ZTg4NGY2YWExY2YzNyJ9', 1, '2019-12-28 16:25:08', '2019-12-28 16:25:08');
+(9, 1, '23', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6InZCU3ROM1dJVlB1MVU4OUdSRVNmREE9PSIsInZhbHVlIjoiNU9qTTg5TkdBb1VLNGRDQ2ZpQWdzUT09IiwibWFjIjoiYTRhZGQzNGZmMDE1ZGMxNmI2OGFjOGVmNWExYTY0YjUwMTVlZGYxNTBiYWUzZDdlMzA2ZTg4NGY2YWExY2YzNyJ9', 1, '2019-12-28 16:25:08', '2019-12-28 16:25:08'),
+(10, 1, '26', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkR0ZHhGRzBkSFdUeHhqQitTUm14S0E9PSIsInZhbHVlIjoicmVualluT2NWVXNUK0VoRjJNbDJmdz09IiwibWFjIjoiY2QzNGY2NTBkZThiNDFkNTljNWRhNGQ2NjdhMGFjOTMyZTJjOWI4ZTg5ZjJjMDE5ZjlhMzU5ODg5NDQ1NDcwYyJ9', 1, '2020-01-03 09:57:42', '2020-01-03 09:57:42'),
+(11, 1, '26', 'SmartSeas PH added Identify management activities that can be done collectively at the alliance level rather than at per LGU level. in activity Conduct of workshop/training on MPA costing (i.e.training of trainors)', '/project/outcome/partner/eyJpdiI6IkdZcHlhZFd3N0NPQjkyWnlpSVdsMnc9PSIsInZhbHVlIjoib1ZCODJRT2VEOERwaDVJSVpoRjFMdz09IiwibWFjIjoiZTU5YjdkNzNhYWM5ZTkyZjRiMDE4ZDkxOTRhNTIzM2VlM2EyMDZlZjBlZDkwMjNhODRmZDYyZDQ4MzYyZTEwZSJ9', 1, '2020-01-03 14:08:29', '2020-01-03 14:08:29');
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,8 @@ CREATE TABLE `outcomes` (
 --
 
 INSERT INTO `outcomes` (`id`, `user_id`, `project_id`, `title`, `description`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Increased Management Effectiveness of MPAs and MPANs', NULL, 1, '2019-12-28 13:34:22', '2019-12-28 13:34:22');
+(1, 1, 1, 'Increased Management Effectiveness of MPAs and MPANs', NULL, 1, '2019-12-28 13:34:22', '2019-12-28 13:34:22'),
+(2, 1, 1, 'Improved Financial Sustainability of MPAs and MPANs', NULL, 1, '2020-01-03 14:02:47', '2020-01-03 14:02:47');
 
 -- --------------------------------------------------------
 
@@ -177,7 +181,8 @@ CREATE TABLE `outputs` (
 --
 
 INSERT INTO `outputs` (`id`, `user_id`, `project_id`, `outcome_id`, `title`, `description`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'New MPA Networks (MPANs) established in designated priority areas.', NULL, 1, '2019-12-28 13:36:36', '2019-12-28 13:36:36');
+(1, 1, 1, 1, 'New MPA Networks (MPANs) established in designated priority areas.', NULL, 1, '2019-12-28 13:36:36', '2019-12-28 13:36:36'),
+(2, 1, 1, 2, 'Benchmark management costs established for MPAs of varying size (<5 ha, < 50ha, <250ha, >250 ha) and potential cost savings or cost efficiencies on average per site identified through consolidation of management functions in MPANs.', NULL, 1, '2020-01-03 14:03:35', '2020-01-03 14:03:35');
 
 -- --------------------------------------------------------
 
@@ -246,6 +251,37 @@ CREATE TABLE `remarks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `risk_logs`
+--
+
+CREATE TABLE `risk_logs` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `date_identified` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `response` varchar(255) DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL,
+  `submitted_by` varchar(255) DEFAULT NULL,
+  `last_update` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `risk_level` varchar(255) DEFAULT NULL,
+  `active` int(255) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `risk_logs`
+--
+
+INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-03 09:12:54', '2020-01-03 09:12:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -284,7 +320,7 @@ CREATE TABLE `tasks` (
   `deliverables` varchar(255) DEFAULT NULL,
   `fund_source` varchar(255) DEFAULT NULL,
   `code_id` int(255) DEFAULT NULL,
-  `amount` varchar(255) DEFAULT NULL,
+  `unit_cost` varchar(255) DEFAULT NULL,
   `status` varchar(255) NOT NULL,
   `progress` varchar(255) NOT NULL DEFAULT '0',
   `timeline` varchar(255) DEFAULT NULL,
@@ -299,8 +335,9 @@ CREATE TABLE `tasks` (
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `user_id`, `partner_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `title`, `deliverables`, `fund_source`, `code_id`, `amount`, `status`, `progress`, `timeline`, `unit_measurement`, `month`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 23, 1, '1', 1, 1, 'Development of MPAN Planning Toolkit', 'test', 'GEF', 1, '3936.17', 'medium', '0', '1', '1', 'Jan,Feb,Mar', 1, '2019-12-28 16:25:08', '2019-12-28 16:25:08');
+INSERT INTO `tasks` (`id`, `user_id`, `partner_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `title`, `deliverables`, `fund_source`, `code_id`, `unit_cost`, `status`, `progress`, `timeline`, `unit_measurement`, `month`, `active`, `created_at`, `updated_at`) VALUES
+(2, 1, 26, 1, '1', 1, 1, 'Development of MPAN Planning Toolkit', NULL, 'GEF', 1, '120000', '', '0', '1,4', '1', '1-1-700000.50,2-2-700000,--,--,--,--,--,--,--,--,--,12-1-90000', 1, '2020-01-02 21:50:41', '2020-01-03 09:57:42'),
+(3, 1, 26, 1, '2', 2, 2, 'Identify management activities that can be done collectively at the alliance level rather than at per LGU level.', 'a) Inventory of management activities in 4 LGUs and their costs (BATMan)', 'GEF', 1, '20000', '', '0', '1,3', '1', '--,--,3-1-20000,--,--,--,--,--,--,--,--,--', 1, '2020-01-02 22:27:31', '2020-01-03 14:08:29');
 
 -- --------------------------------------------------------
 
@@ -462,6 +499,12 @@ ALTER TABLE `remarks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `risk_logs`
+--
+ALTER TABLE `risk_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -500,7 +543,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `budget_codes`
@@ -518,19 +561,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `outcomes`
 --
 ALTER TABLE `outcomes`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `outputs`
 --
 ALTER TABLE `outputs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -545,6 +588,12 @@ ALTER TABLE `remarks`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `risk_logs`
+--
+ALTER TABLE `risk_logs`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
@@ -554,7 +603,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `unit_measurements`

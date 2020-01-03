@@ -15,6 +15,10 @@ class Outcome extends Model
         return $this->hasMany('App\Output');
     }
 
+    public function tasks() {
+        return $this->hasMany('App\Task');
+    }
+
     public function owner() {
         return $this->hasOne('App\User', 'id', 'user_id');
     }

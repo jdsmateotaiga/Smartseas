@@ -311,7 +311,7 @@ span.small.bold {
 .month-table {
     display: none;
     margin-top: 10px;
-} 
+}
 
 .timeline input[type="checkbox"] {
     outline: none;
@@ -406,3 +406,18 @@ body .main-content {
     padding: 0;
     background-color: yellow;
 }
+
+#report_detail th { vertical-align: top; }
+/* #report { margin-top :140px; } */
+#report a { color: inherit; }
+#report .navigation { position: fixed; z-index: 2; top: 0; left: 0; right: 0; background-color: #fff; -webkit-box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); -moz-box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.25); }
+#report .navigation ul li { float: left; width: 25%; text-align: center; list-style-type: none; }
+#report .navigation ul li a { padding: 20px 0; text-decoration: none; display: block; }
+#report .navigation ul li.active a { background-color: #2196f3!important; color: #fff!important;  }
+#excel .sheet { display: none; padding: 0 20px; }
+#excel .sheet.active { display: block; }
+
+#risklog th, #detail_awp th { text-align: center; }
+#detail_awp { overflow-x: auto; }
+#detail_awp table { width: 2000px; }
+#summary tfoot td { background-color: #fbd1a2; color: #333; font-weight: bold; }

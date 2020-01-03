@@ -172,7 +172,7 @@ $(document).ready(function(){
     $('.modal-edit').click(function(){
         $(this).find('form').trigger("reset");
         $(this).find('form').find('textarea').val('');
-        
+
         var edit_url   = $(this).data('edit-url'),
             action_url = $(this).data('action-url'),
             target_id  = $(this).data('target');
@@ -204,7 +204,7 @@ $(document).ready(function(){
                               </select>
                           </div>
                           <div class="col-md-2">
-                              <a href="#" class="remove-risk-level">remove</a> 
+                              <a href="#" class="remove-risk-level">remove</a>
                           </div>
                       </div>`;
                     }
@@ -225,7 +225,7 @@ $(document).ready(function(){
                       for(var x = 0; x < timeline.length; x++) {
                           $('#edit_task_q-'+timeline[x]).prop('checked', true);
                       }
-                    } 
+                    }
                     if(data.month) {
                       var month = data.month.split(',');
                       for(var y = 0; y < month.length; y++) {
@@ -276,6 +276,13 @@ $(document).ready(function(){
       }
     });
 
+    $('.t-quarter').click(function(){
+      if( !$(this).is(':checked') ) {
+        $(this).parent().find('input').removeAttr('required');
+        $(this).parent().find('input').prop('checked', false); 
+      }
+    });
+
     let count = ($('#edit_risk_risk-count').val()) ? $('#edit_risk_risk-count').val() : 0;
 
     $('.add-risk-level').on('click', function(e){
@@ -292,7 +299,7 @@ $(document).ready(function(){
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="remove-risk-level">remove</a> 
+                        <a href="#" class="remove-risk-level">remove</a>
                     </div>
                 </div>`;
         if( $(this).parents('#edit-risk-log').length == 1 ) {
