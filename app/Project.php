@@ -35,6 +35,44 @@ class Project extends Model
         return $this->hasMany('App\Output');
     }
 
+    public function user_cost() {
+      $new_arr = [];
+      foreach( $this->outcomes()->get() as $outcome) {
+        $outcome_arr = ['outcome'=>$outcome->id, 'details' => []];
+        foreach($outcome->tasks as $task) {
+            $month = explode(',', $task->month);
+            $collectedData = [];
+            foreach($month as $item) {
+              $cost = explode('-', $item)[2];
+              $user_code = $task->user->partner_code;
+              if($cost != '') {
+                  array_push($outcome_arr['details'], [
+                        'user' => $user_code,
+                        'cost' => $cost
+                  ]);
+              }
+            }
+        }
+        array_push($new_arr, $outcome_arr);
+      }
+      return $new_arr;
+    }
+
+    public function report_user_cost() {
+      $new_arr = [];
+      foreach($this->user_cost() as $list) {
+         $collectedData = [];
+         foreach($list['details'] as $item ) {
+           if(isset($collectedData[$item['user']]))
+               $collectedData[$item['user']] +=  $item['cost'];
+            else
+               $collectedData += array($item['user'] => $item['cost']);
+         }
+         array_push($new_arr, $collectedData);
+      }
+      return $new_arr;
+    }
+
 
     protected $guarded = array();
     protected $table = 'projects';

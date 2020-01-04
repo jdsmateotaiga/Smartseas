@@ -24,7 +24,7 @@
             <thead>
               <tr>
                 <th colspan=2>Planned Activities</th>
-                <th colspan=13>Physical Target</th>
+                <th colspan=14>Physical Target</th>
                 <th colspan=19>Financial Target</th>
               </tr>
               <tr>
@@ -94,7 +94,7 @@
                 <td>{{ $task->deliverables }}</td>
                 <td>{{ $task->unit_of_measurement->unit }}</td>
                 @php
-                  $month_count_cost = explode(',', $task->month);  
+                  $month_count_cost = explode(',', $task->month);
                   $total_count = 0;
                   $total_cost = 0;
                 @endphp
@@ -126,4 +126,51 @@
       @endforeach
     </div>
     @endforeach
+    <table class="table table-striped mB-0">
+      <thead class="thead-dark">
+        <tr>
+          <th>Partner</th>
+          @php $count = 1; @endphp
+          @foreach($project->report_user_cost() as $item)
+          <th>Outcome {{$count++}}</th>
+          @endforeach
+        </tr>
+      </thead>
+      <tbody>
+        @php
+          $user = [];
+        @endphp
+        @foreach($project->report_user_cost() as $keyy => $item )
+          @foreach($item as $key => $value)
+            @if(!in_array($key, $user))
+              @php array_push($user, $key) @endphp
+              <tr>
+                <td>{{ $key }}</td>
+                  @foreach($project->report_user_cost() as $keyx => $valx)
+                  <td>
+                      @foreach($valx as $keyz => $valz)
+                        @if($key == $keyz)
+                          {{ $valz }}
+                        @endif
+                      @endforeach
+                  </td>
+                  @endforeach
+              </tr>
+            @endif
+          @endforeach
+        @endforeach
+        <tr style="background-color: #905e26; color: #fff;">
+          <td>Total</td>
+          @foreach($project->report_user_cost() as $keyx => $valx)
+          @php $total_per_outcome = 0; @endphp
+          <td>
+              @foreach($valx as $keyz => $valz)
+                  @php $total_per_outcome = $total_per_outcome + $valz; @endphp
+              @endforeach
+              {{ number_format($total_per_outcome, 2, '.', ',') }}
+          </td>
+          @endforeach
+        </tr>
+      </tbody>
+    </table>
 </div>

@@ -27,6 +27,8 @@ class Outcome extends Model
         return $this->hasOne('App\Project', 'id', 'project_id');
     }
 
+
+
     protected $guarded = array();
     protected $table = 'outcomes';
 }

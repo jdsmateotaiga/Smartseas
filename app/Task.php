@@ -32,6 +32,7 @@ class Task extends Model
     public function activity() {
       return $this->hasOne('App\Activity', 'id', 'activity_id');
     }
+    
 
 
     protected $guarded = array();
