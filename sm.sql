@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2020 at 01:31 AM
+-- Generation Time: Jan 13, 2020 at 10:06 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -131,7 +131,8 @@ INSERT INTO `notifications` (`id`, `user_id`, `to_user_id`, `body`, `url`, `stat
 (8, 1, '30', 'You has been added in new project \"Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas\"', '/project/partner/eyJpdiI6InliTVVtejJuTkQ0MXZZZjlrU1g1NGc9PSIsInZhbHVlIjoiZFNZTXRFdFBqSDJERkM0b1RXRXhzUT09IiwibWFjIjoiYWU1YThjMGY1MWQ4ZjQwYjFhODdjYWI2YjhiMWQyODkwNjJhZmYzODJhZDc5OWUwNjY3YTVhNTczNGIyNTY0OCJ9', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59'),
 (9, 1, '23', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6InZCU3ROM1dJVlB1MVU4OUdSRVNmREE9PSIsInZhbHVlIjoiNU9qTTg5TkdBb1VLNGRDQ2ZpQWdzUT09IiwibWFjIjoiYTRhZGQzNGZmMDE1ZGMxNmI2OGFjOGVmNWExYTY0YjUwMTVlZGYxNTBiYWUzZDdlMzA2ZTg4NGY2YWExY2YzNyJ9', 1, '2019-12-28 16:25:08', '2019-12-28 16:25:08'),
 (10, 1, '26', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkR0ZHhGRzBkSFdUeHhqQitTUm14S0E9PSIsInZhbHVlIjoicmVualluT2NWVXNUK0VoRjJNbDJmdz09IiwibWFjIjoiY2QzNGY2NTBkZThiNDFkNTljNWRhNGQ2NjdhMGFjOTMyZTJjOWI4ZTg5ZjJjMDE5ZjlhMzU5ODg5NDQ1NDcwYyJ9', 1, '2020-01-03 09:57:42', '2020-01-03 09:57:42'),
-(11, 1, '26', 'SmartSeas PH added Identify management activities that can be done collectively at the alliance level rather than at per LGU level. in activity Conduct of workshop/training on MPA costing (i.e.training of trainors)', '/project/outcome/partner/eyJpdiI6IkdZcHlhZFd3N0NPQjkyWnlpSVdsMnc9PSIsInZhbHVlIjoib1ZCODJRT2VEOERwaDVJSVpoRjFMdz09IiwibWFjIjoiZTU5YjdkNzNhYWM5ZTkyZjRiMDE4ZDkxOTRhNTIzM2VlM2EyMDZlZjBlZDkwMjNhODRmZDYyZDQ4MzYyZTEwZSJ9', 1, '2020-01-03 14:08:29', '2020-01-03 14:08:29');
+(11, 1, '26', 'SmartSeas PH added Identify management activities that can be done collectively at the alliance level rather than at per LGU level. in activity Conduct of workshop/training on MPA costing (i.e.training of trainors)', '/project/outcome/partner/eyJpdiI6IkdZcHlhZFd3N0NPQjkyWnlpSVdsMnc9PSIsInZhbHVlIjoib1ZCODJRT2VEOERwaDVJSVpoRjFMdz09IiwibWFjIjoiZTU5YjdkNzNhYWM5ZTkyZjRiMDE4ZDkxOTRhNTIzM2VlM2EyMDZlZjBlZDkwMjNhODRmZDYyZDQ4MzYyZTEwZSJ9', 1, '2020-01-03 14:08:29', '2020-01-03 14:08:29'),
+(12, 1, '25', 'SmartSeas PH added as in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkhaYU5PYm02c1pqR2ExTTkwMk5nWGc9PSIsInZhbHVlIjoiVmw5Y05uRVlpd3M5VFZwbDRyc3R6QT09IiwibWFjIjoiY2QzNTRjNGM2M2Q0Njc4NDgzOTBhYWMzYjU4NGM3NmY3NDJiMWI4NTU5NmQ4OTczNzNhNTQzNjMzYmZjNWNlNCJ9', 1, '2020-01-04 11:18:03', '2020-01-04 11:18:03');
 
 -- --------------------------------------------------------
 
@@ -337,7 +338,8 @@ CREATE TABLE `tasks` (
 
 INSERT INTO `tasks` (`id`, `user_id`, `partner_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `title`, `deliverables`, `fund_source`, `code_id`, `unit_cost`, `status`, `progress`, `timeline`, `unit_measurement`, `month`, `active`, `created_at`, `updated_at`) VALUES
 (2, 1, 26, 1, '1', 1, 1, 'Development of MPAN Planning Toolkit', NULL, 'GEF', 1, '120000', '', '0', '1,4', '1', '1-1-700000.50,2-2-700000,--,--,--,--,--,--,--,--,--,12-1-90000', 1, '2020-01-02 21:50:41', '2020-01-03 09:57:42'),
-(3, 1, 26, 1, '2', 2, 2, 'Identify management activities that can be done collectively at the alliance level rather than at per LGU level.', 'a) Inventory of management activities in 4 LGUs and their costs (BATMan)', 'GEF', 1, '20000', '', '0', '1,3', '1', '--,--,3-1-20000,--,--,--,--,--,--,--,--,--', 1, '2020-01-02 22:27:31', '2020-01-03 14:08:29');
+(3, 1, 25, 1, '2', 2, 2, 'Identify management activities that can be done collectively at the alliance level rather than at per LGU level.', 'a) Inventory of management activities in 4 LGUs and their costs (BATMan)', 'GEF', 1, '20000', '', '0', '1,3', '1', '--,--,3-1-20000,--,--,--,--,--,--,--,--,--', 1, '2020-01-03 17:13:06', '2020-01-03 14:08:29'),
+(4, 1, 25, 1, '1', 1, 1, 'as', 'as', 'as', 1, '5', '', '0', '1', '1', '1-12-50000,--,--,--,--,--,--,--,--,--,--,--', 1, '2020-01-04 11:18:03', '2020-01-04 11:18:03');
 
 -- --------------------------------------------------------
 
@@ -561,7 +563,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `outcomes`
@@ -603,7 +605,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `unit_measurements`
