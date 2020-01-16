@@ -16,7 +16,15 @@ class Project extends Model
     }
 
     public function risk_logs() {
-        return $this->hasMany('App\RiskLog')->where('active', 1);
+        $query = $this->hasMany('App\RiskLog');
+        if(auth()->user()->hasRole('admin')) {
+          return $query->where('active', 1);
+        } else {
+          return $query->where([
+            ['user_id', auth()->user()->id],
+            ['active', 1],
+          ]);
+        }
     }
 
     public function owner() {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2020 at 10:06 PM
+-- Generation Time: Jan 16, 2020 at 01:23 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -207,6 +207,62 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `progress_reports`
+--
+
+CREATE TABLE `progress_reports` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` int(255) NOT NULL,
+  `results` varchar(5000) DEFAULT NULL,
+  `technical_accomplishment` varchar(5000) DEFAULT NULL,
+  `reporting_date` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress_report_activities`
+--
+
+CREATE TABLE `progress_report_activities` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` int(255) NOT NULL,
+  `output_id` int(255) NOT NULL,
+  `activity_id` int(255) NOT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `accomplishment` varchar(5000) DEFAULT NULL,
+  `challenges` varchar(5000) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress_report_outputs`
+--
+
+CREATE TABLE `progress_report_outputs` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` int(255) NOT NULL,
+  `output_id` int(255) NOT NULL,
+  `indicator` varchar(3000) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  `baseline` varchar(3000) DEFAULT NULL,
+  `quarter_milestone` varchar(3000) DEFAULT NULL,
+  `annual_target` varchar(3000) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
@@ -221,6 +277,9 @@ CREATE TABLE `projects` (
   `implementing_partner` varchar(255) DEFAULT NULL,
   `partners` varchar(255) NOT NULL,
   `objective` varchar(1000) DEFAULT NULL,
+  `total_project_fund` varchar(255) DEFAULT NULL,
+  `awp_budget` varchar(255) DEFAULT NULL,
+  `donors` varchar(255) DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT current_timestamp()
@@ -230,8 +289,8 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `user_id`, `title`, `project_id`, `award_id`, `start_date`, `completion_date`, `implementing_partner`, `partners`, `objective`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59');
+INSERT INTO `projects` (`id`, `user_id`, `title`, `project_id`, `award_id`, `start_date`, `completion_date`, `implementing_partner`, `partners`, `objective`, `total_project_fund`, `awp_budget`, `donors`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, '0', NULL, '', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59');
 
 -- --------------------------------------------------------
 
@@ -278,7 +337,7 @@ CREATE TABLE `risk_logs` (
 --
 
 INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-03 09:12:54', '2020-01-03 09:12:54');
+(1, 26, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-15 21:50:53', '2020-01-03 09:12:54');
 
 -- --------------------------------------------------------
 
@@ -401,7 +460,7 @@ INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
 (24, 1, 'nfrd@smartseas.ph', '$2y$10$7Oh29ZyhF9O.V1f.IP/EyetyA.vPSBTzQb5P2AwXGkoyq9.p6Oa6S', 'NFRD', 'National Fisheries Research and Development Institute - Southern Palawan', NULL, 'National Fisheries Research and Development Institute - Southern Palawan', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:35:48', '2019-09-07 04:35:48'),
 (25, 1, 'rp@smartseas.ph', '$2y$10$.E3hBfxFbAiyZLDUVTwv3.eLiZr46ZcaNOTBfI1Pm/YwBXzK1k0T.', 'RP', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:10', '2019-09-07 04:37:10'),
-(26, 1, 'rpt@smartseas.ph', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
+(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
 (27, 1, 'wwf@smartseas.ph', '$2y$10$UPAo4z7IjZC7xlK0i8Pc7..GEXawx5yyJHOdV4g9Hk.5r6Xm.C0Ze', 'WWF', 'WWF - Davao Gulf', NULL, 'WWF - Davao Gulf', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:38:53', '2019-09-07 04:38:53'),
 (28, 1, 'hf@smartseas.ph', '$2y$10$wLtv/WG08rx2bs6B0eVK9uL12HZUKVJuAcIbVHwSwvlNjE0MTGvpm', 'HF', 'Haribon Foundation - Lanuza Bay', NULL, 'Haribon Foundation - Lanuza Bay', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:39:42', '2019-09-07 04:39:42'),
 (29, 1, 'fin@smartseas.ph', '$2y$10$kBngeCxfDong0M1EOSHbsuUx.IMUmGxuBHuNmCmT11iLhfnUA4FPq', 'FIN', 'Fishbase Information Network (FIN)', NULL, 'Fishbase Information Network (FIN)', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:41:01', '2019-09-07 04:41:01'),
@@ -487,6 +546,24 @@ ALTER TABLE `outputs`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `progress_reports`
+--
+ALTER TABLE `progress_reports`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `progress_report_activities`
+--
+ALTER TABLE `progress_report_activities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `progress_report_outputs`
+--
+ALTER TABLE `progress_report_outputs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `projects`
@@ -576,6 +653,24 @@ ALTER TABLE `outcomes`
 --
 ALTER TABLE `outputs`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `progress_reports`
+--
+ALTER TABLE `progress_reports`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `progress_report_activities`
+--
+ALTER TABLE `progress_report_activities`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `progress_report_outputs`
+--
+ALTER TABLE `progress_report_outputs`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `projects`

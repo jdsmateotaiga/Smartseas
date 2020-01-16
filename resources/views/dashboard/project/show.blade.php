@@ -56,5 +56,6 @@
 </div>
 @endif
   @include('dashboard.project.outcome.index')
+  @include('dashboard.project.progress-report.index')
   @include('dashboard.project.risk-log.index')
 @stop
