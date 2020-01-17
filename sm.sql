@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2020 at 02:06 AM
+-- Generation Time: Jan 17, 2020 at 01:43 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -132,7 +132,15 @@ INSERT INTO `notifications` (`id`, `user_id`, `to_user_id`, `body`, `url`, `stat
 (9, 1, '23', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6InZCU3ROM1dJVlB1MVU4OUdSRVNmREE9PSIsInZhbHVlIjoiNU9qTTg5TkdBb1VLNGRDQ2ZpQWdzUT09IiwibWFjIjoiYTRhZGQzNGZmMDE1ZGMxNmI2OGFjOGVmNWExYTY0YjUwMTVlZGYxNTBiYWUzZDdlMzA2ZTg4NGY2YWExY2YzNyJ9', 1, '2019-12-28 16:25:08', '2019-12-28 16:25:08'),
 (10, 1, '26', 'SmartSeas PH added Development of MPAN Planning Toolkit in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkR0ZHhGRzBkSFdUeHhqQitTUm14S0E9PSIsInZhbHVlIjoicmVualluT2NWVXNUK0VoRjJNbDJmdz09IiwibWFjIjoiY2QzNGY2NTBkZThiNDFkNTljNWRhNGQ2NjdhMGFjOTMyZTJjOWI4ZTg5ZjJjMDE5ZjlhMzU5ODg5NDQ1NDcwYyJ9', 1, '2020-01-03 09:57:42', '2020-01-03 09:57:42'),
 (11, 1, '26', 'SmartSeas PH added Identify management activities that can be done collectively at the alliance level rather than at per LGU level. in activity Conduct of workshop/training on MPA costing (i.e.training of trainors)', '/project/outcome/partner/eyJpdiI6IkdZcHlhZFd3N0NPQjkyWnlpSVdsMnc9PSIsInZhbHVlIjoib1ZCODJRT2VEOERwaDVJSVpoRjFMdz09IiwibWFjIjoiZTU5YjdkNzNhYWM5ZTkyZjRiMDE4ZDkxOTRhNTIzM2VlM2EyMDZlZjBlZDkwMjNhODRmZDYyZDQ4MzYyZTEwZSJ9', 1, '2020-01-03 14:08:29', '2020-01-03 14:08:29'),
-(12, 1, '25', 'SmartSeas PH added as in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkhaYU5PYm02c1pqR2ExTTkwMk5nWGc9PSIsInZhbHVlIjoiVmw5Y05uRVlpd3M5VFZwbDRyc3R6QT09IiwibWFjIjoiY2QzNTRjNGM2M2Q0Njc4NDgzOTBhYWMzYjU4NGM3NmY3NDJiMWI4NTU5NmQ4OTczNzNhNTQzNjMzYmZjNWNlNCJ9', 1, '2020-01-04 11:18:03', '2020-01-04 11:18:03');
+(12, 1, '25', 'SmartSeas PH added as in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6IkhaYU5PYm02c1pqR2ExTTkwMk5nWGc9PSIsInZhbHVlIjoiVmw5Y05uRVlpd3M5VFZwbDRyc3R6QT09IiwibWFjIjoiY2QzNTRjNGM2M2Q0Njc4NDgzOTBhYWMzYjU4NGM3NmY3NDJiMWI4NTU5NmQ4OTczNzNhNTQzNjMzYmZjNWNlNCJ9', 1, '2020-01-04 11:18:03', '2020-01-04 11:18:03'),
+(13, 1, '23', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkpyZTgyY21PbnlFVkViUXVLamVDcHc9PSIsInZhbHVlIjoiRzJOb0MrcHVhV1VhblZcL2lBbnlQS3c9PSIsIm1hYyI6IjlhOGFlM2YwYTA1Y2Y4OWNjMTAwNDc2MTFhMjg0OWQxNGQ0N2U3OTcyMWNkNTkwMDE3MmQ5Zjg2NDNlNjY4ZDAifQ==', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(14, 1, '24', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6Ikh0REZTT2sxYVl4MmtpSTJEVFg4a3c9PSIsInZhbHVlIjoiSjh6TGFxdXFwekRRZ2lkSzBFdnFNZz09IiwibWFjIjoiYzk3YTk2MWM2Zjk2MDI5Y2E4NTM0Y2UzMTcwNjQzMGFjZmRhNjBhMTIyYTBkZjVmNDI2OTA1YTY4MjQ5MWRiOSJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(15, 1, '25', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6Im42Um1wWE82S0ZWcnpDU2lTdXVTQXc9PSIsInZhbHVlIjoiK01tayswY1NRTGoyWGk0MzFQd3VmUT09IiwibWFjIjoiNmJiZDlkNGFhNDkxYzFmNWI0ZmZmMTc5ZDliZTNjOTRkZThmZTM3YjdkNWVhMTI0ZWZmYjViNDFmNzMyNTdlMSJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(16, 1, '26', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IjF3aTVhcU1NVTVNbTlhRERGTmkzc1E9PSIsInZhbHVlIjoiVG9Yb1QzWHZ4UEZIeVJOSnVXSTJKUT09IiwibWFjIjoiNWFlOTQ0MzQ0MTRmYjE5NWNlMzNhZTdlZmZmZWI3ODJkZDU1YjcyYmJmZjg5NzNmMTE3M2JmOGRlNDNhNDdjOCJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(17, 1, '27', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkFpT2ZUN1JwUEQ2ZG5ZREdxS3psNVE9PSIsInZhbHVlIjoib0t5TkZJdFBQNG4rWnRWaUVoQXNpQT09IiwibWFjIjoiYzllMjhiZTc0Y2M1MjYxYzdjZjQ4Y2JjZTUxY2IyM2Y5N2I0MWJjZDMzMDFjNzhlMzM0NTQxMTUwZWY1OWE5OCJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(18, 1, '28', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6Ilp3MGxLaHFZWmlldkNwZEZNcjZnNnc9PSIsInZhbHVlIjoiWUtyenBUMExOMUl4YkZLK3VhMG5sZz09IiwibWFjIjoiMDI2MmQ4ZjVmYzc3NzM3MmRmZjFmMzgyY2Y3ZmEzN2VmNGU3MDhkN2E4YTAxMmNjYTFkOTgxZTFmZDY0YzEwOSJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(19, 1, '29', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IjI5b3E3YjVuZ2JZU3lGOXREOUU3dFE9PSIsInZhbHVlIjoid2hNR2poTXZVbU9GcDhOZHBxYmtOQT09IiwibWFjIjoiMmMwZmYwZjViNmMyNzYyMjViYzkzM2E0MTA2ZmFjOWEyMTRmYTM1MTliMzdhNmQ2NDI0ODAwZmI3OGZjYTQ3OCJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(20, 1, '30', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkY0TnZ3RFd4d1JtTmxmVUVQSW1rV0E9PSIsInZhbHVlIjoiQ3Z2dUQ2Q1FWXC9BdExGbFpZVlpsWXc9PSIsIm1hYyI6ImEyYTA4MmNmNTYzMGVhZmE4YjY4YWM3YTBjMTFhNmFlNzAzMWM5ODQ0OTIwNTRhNzJhY2QyMzQ2OWJkZjczYTIifQ==', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16');
 
 -- --------------------------------------------------------
 
@@ -214,12 +222,21 @@ CREATE TABLE `progress_reports` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `results` varchar(5000) DEFAULT NULL,
-  `technical_accomplishment` varchar(5000) DEFAULT NULL,
+  `technical_accomplishments` varchar(5000) DEFAULT NULL,
   `reporting_date` varchar(255) DEFAULT NULL,
+  `active` int(255) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `progress_reports`
+--
+
+INSERT INTO `progress_reports` (`id`, `user_id`, `project_id`, `title`, `results`, `technical_accomplishments`, `reporting_date`, `active`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, '1234', '1234', '1234', '1234', 1, '2020-01-17 15:18:07', '2020-01-17 16:40:56');
 
 -- --------------------------------------------------------
 
@@ -290,7 +307,8 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `user_id`, `title`, `project_id`, `award_id`, `start_date`, `completion_date`, `implementing_partner`, `partners`, `objective`, `total_project_fund`, `awp_budget`, `donors`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, '0', NULL, '', 1, '2019-12-28 13:18:59', '2019-12-28 13:18:59');
+(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, 'ad', 'asd', 'asd', 1, '2019-12-28 13:18:59', '2020-01-17 11:48:00'),
+(2, 1, 'gdfg', 'dgfdgd', 'dgdfg', '2024', '2024', 'dfg', '23,24,25,26,27,28,29,30', 'asd', 'gdfgdg', 'gdfg', 'dfgfdg', 0, '2020-01-17 13:07:16', '2020-01-17 13:07:23');
 
 -- --------------------------------------------------------
 
@@ -337,7 +355,7 @@ CREATE TABLE `risk_logs` (
 --
 
 INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
-(1, 26, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-15 21:50:53', '2020-01-03 09:12:54');
+(1, 26, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life.', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-16 22:11:48', '2020-01-17 14:11:48');
 
 -- --------------------------------------------------------
 
@@ -454,7 +472,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code`, `partner_name`, `partner_name_address`, `partner_admin_name`, `partner_admin_address`, `partner_admin_gender`, `partner_admin_position`, `partner_admin_image`, `partner_admin_ID`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
-(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'TVQN3e0CTR0H963AEJcFpkYnTqcuSH584AaI7guytQaCANX1fjjZq6p7wmGI', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
+(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'YlfSfQXPoq19L9eG9IvnhFavPnMKersYM47vcHWpvOeKLyFY517PC2id8QNM', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
 (19, 1, 'projectmanager1@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'PM1', 'ProjectManager1', NULL, 'ProjectManager1', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, 'TB5E9PP2BApEDvcZQDdIt1gzEhyozGKTnpr13pVEJWQCVGGTzRQrxSGLOUr7', 1, '2019-08-11 16:55:34', '2019-08-17 14:29:06'),
 (20, 1, 'projectmanager2@gmail.com', '$2y$10$wBXx6OlZE3gh/g.2/bM00eK32gPoXyIA9hRyUHcoTLHH0lVNZ6/Li', 'PM2', 'ProjectManager2', NULL, 'ProjectManager2', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, NULL, 1, '2019-08-11 17:17:18', '2019-08-17 13:49:57'),
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
@@ -640,7 +658,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `outcomes`
@@ -658,7 +676,7 @@ ALTER TABLE `outputs`
 -- AUTO_INCREMENT for table `progress_reports`
 --
 ALTER TABLE `progress_reports`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `progress_report_activities`
@@ -676,7 +694,7 @@ ALTER TABLE `progress_report_outputs`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `remarks`
@@ -688,7 +706,7 @@ ALTER TABLE `remarks`
 -- AUTO_INCREMENT for table `risk_logs`
 --
 ALTER TABLE `risk_logs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`

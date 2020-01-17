@@ -47,7 +47,7 @@ class OutputController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if( $validator->fails() ) {
-            return back();
+            return response()->json($validator->messages(), 200);
         } else {
           $outcome = new Output;
           $outcome->user_id = auth()->user()->id;

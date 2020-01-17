@@ -44,7 +44,7 @@ class RemarkController extends Controller
         );
         $validator = Validator::make($request->all(), $rules);
         if( $validator->fails() ) {
-            return response()->json('error');
+            return response()->json($validator->messages(), 200);
         } else {
           $remark = new Remark;
           $remark->user_id      = auth()->user()->id;

@@ -49,7 +49,7 @@ class OutcomeController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if( $validator->fails() ) {
-            return back();
+            return response()->json($validator->messages(), 200);
         } else {
           $outcome = new Outcome;
           $outcome->user_id = auth()->user()->id;

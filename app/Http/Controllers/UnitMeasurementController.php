@@ -52,7 +52,7 @@ class UnitMeasurementController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()) {
-            return back();
+            return response()->json($validator->messages(), 200);
         } else {
             $code = new UnitMeasurement;
             $code->user_id     = auth()->user()->id;

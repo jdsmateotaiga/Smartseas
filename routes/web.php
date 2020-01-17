@@ -31,14 +31,23 @@ use App\User;
     Route::post('risklog/activate/{id}', 'RiskLogController@activate');
     Route::post('risklog/deactivate/{id}', 'RiskLogController@deactivate');
 
+    Route::get('view_progress_report/{id}', 'ProgressReportController@show')->name('view_progress_report.show');
+
     Route::group(['middleware' => 'roles', 'roles'=>['partner']], function () {
+
       Route::get('project/partner/{id}', 'ProjectController@partnerShowProject');
       Route::get('project/outcome/partner/{id}', 'OutcomeController@partnerShowOutcome');
       Route::get('project/outcome/output/partner/{id}', 'OutputController@partnerShowOutput');
       Route::get('project/outcome/output/activity/partner/{id}', 'ActivityController@partnerShowActivity');
+
+      Route::resource('progress_report', 'ProgressReportController');
+      Route::post('progress_report/activate/{id}', 'ProgressReportController@activate');
+      Route::post('progress_report/deactivate/{id}', 'ProgressReportController@deactivate');
+
     });
 
     Route::group(['middleware' => 'roles', 'roles'=>['admin', 'project_manager']], function () {
+
         Route::post('register', 'Auth\RegisterController@register')->name('register');
         Route::get('register', 'Auth\RegisterController@showRegistrationForm');
         Route::resource('user-management', 'UserManagementController');

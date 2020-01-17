@@ -98,11 +98,11 @@ class RiskLogController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+
 
         $risklog_id = Helper::decrypt_id($id);
         $risklog = RiskLog::find($risklog_id);
-     
+
         $risklog->description = $request->input('description');
         $risklog->date_identified = $request->input('date_identified');
         $risklog->type = $request->input('type');
@@ -118,7 +118,10 @@ class RiskLogController extends Controller
             }
         }
         $risklog->risk_level = implode(",", $risk_level);
-        $risklog->update();
+        if(auth()->user()->id == $risklog->user_id || auth()->user()->hasRole('admin')) {
+            $risklog->update();
+        }
+
 
         return back();
     }

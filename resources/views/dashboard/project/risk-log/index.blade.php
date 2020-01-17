@@ -51,14 +51,14 @@
                     @foreach($project->risk_logs as $risk)
                         <tr>
                             <td class="text-center">{{ $count++ }}</td>
-                            <td>{{ $risk->description }}</td>
+                            <td>{{ Helper::the_excerpt($risk->description, 50) }}</td>
                             <td>{{ $risk->date_identified }}</td>
                             <td>{{ $risk->type }}</td>
-                            <td>{{ $risk->response }}</td>
+                            <td>{{ Helper::the_excerpt($risk->response, 50) }}</td>
                             <td>{{ $risk->owner }}</td>
                             <td>{{ $risk->submitted_by }}</td>
                             <td>{{ $risk->last_update }}</td>
-                            <td>{{ $risk->status }}</td>
+                            <td>{{ Helper::the_excerpt($risk->status, 50) }}</td>
                             @php $get_year = explode(',', $risk->risk_level); @endphp
                             @foreach($new_year as $year)
                             <td class="td-max">
@@ -80,7 +80,7 @@
                             </a>
                             <form style="display: inline-block; vertical-align: middle;" action="{{ action('RiskLogController@deactivate', [ 'id'=> Helper::encrypt_id($risk->id)] )}}" method="post">
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger" title="deactivate this risk log"  onclick="return confirm('Are you sure you want to activate this risk log?');"><i class="ti-trash"></i></button>
+                                <button type="submit" class="btn btn-danger" title="deactivate this risk log"  onclick="return confirm('Are you sure you want to deactivate this risk log?');"><i class="ti-trash"></i></button>
                             </form>
                             </td>
                         </tr>

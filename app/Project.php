@@ -27,6 +27,14 @@ class Project extends Model
         }
     }
 
+    public function progress_reports() {
+      return $this->hasMany('App\ProgressReport')
+            ->where([
+              ['user_id', auth()->user()->id],
+              ['active', 1]
+            ]);
+    }
+
     public function owner() {
         return $this->hasOne('App\User', 'id', 'user_id');
     }

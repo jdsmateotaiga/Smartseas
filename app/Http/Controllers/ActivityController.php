@@ -59,7 +59,7 @@ class ActivityController extends Controller
 
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return back();
+            return response()->json($validator->messages(), 200);
         } else {
             $sprint = new Activity;
             $sprint->user_id              = auth()->user()->id;

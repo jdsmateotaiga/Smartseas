@@ -37,6 +37,20 @@
                         </div>
                     </div>
                     <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="total_project_fund">Total Project Fund</label>
+                            <input type="text" class="form-control" name="total_project_fund" id="total_project_fund" value="{{$project->total_project_fund}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="awp_budget">AWP Budget</label>
+                            <input type="text" class="form-control" name="awp_budget" id="awp_budget" value="{{$project->awp_budget}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="donors">Donor/s</label>
+                            <input type="text" class="form-control" name="donors" id="donors" value="{{$project->donors}}">
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="start_date">Start Date</label>
                             <select class="form-control" id="start_date" name="start_date" required autoComplete="off">

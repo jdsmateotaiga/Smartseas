@@ -95,6 +95,9 @@ class ProjectController extends Controller
             $project->start_date = $request->input('start_date');
             $project->completion_date = $request->input('completion_date');
             $project->implementing_partner = $request->input('implementing_partner');
+            $project->total_project_fund = $request->input('total_project_fund');
+            $project->awp_budget = $request->input('awp_budget');
+            $project->donors = $request->input('donors');
             $project->objective = $request->input('objective');
             $partners = [];
             for($i = 1; $i <= $request->input('responsibe_user_count'); $i++) {
@@ -187,6 +190,9 @@ class ProjectController extends Controller
             $project->start_date = $request->input('start_date');
             $project->completion_date = $request->input('completion_date');
             $project->implementing_partner = $request->input('implementing_partner');
+            $project->total_project_fund = $request->input('total_project_fund');
+            $project->awp_budget = $request->input('awp_budget');
+            $project->donors = $request->input('donors');
             $project->objective = $request->input('objective');
             $partners = [];
             for($i = 1; $i <= $request->input('responsibe_user_count'); $i++) {

@@ -181,13 +181,12 @@ $(document).ready(function(){
           type: 'GET',
           url: edit_url,
           success: function(data){
+              let keys = Object.keys(data);
               switch(target_id) {
                   case '#edit-risk-log':
-                    let keys = Object.keys(data);
                     for(var x  = 0; x < keys.length; x++) {
                      $('#edit_risk_'+keys[x]).val(data[keys[x]]);
                     }
-
                     let risk_level = data.risk_level.split(',');
                     console.log(risk_level);
                     var html = '';
@@ -263,6 +262,11 @@ $(document).ready(function(){
                     $('#edit_unit').val(data.unit);
                     $('#edit_description').val(data.description);
                     break;
+                  case '#edit-progress-report':
+                    for(var x  = 0; x < keys.length; x++) {
+                     $('#edit_'+keys[x]).val(data[keys[x]]);
+                    }
+                    break;
               }
           }
         });
@@ -279,7 +283,7 @@ $(document).ready(function(){
     $('.t-quarter').click(function(){
       if( !$(this).is(':checked') ) {
         $(this).parent().find('input').removeAttr('required');
-        $(this).parent().find('input').prop('checked', false); 
+        $(this).parent().find('input').prop('checked', false);
       }
     });
 
