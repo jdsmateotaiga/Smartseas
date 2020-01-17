@@ -8,10 +8,10 @@
             </div>
             <div class="modal-body">
                 {{ csrf_field() }}
-                <input type="hidden" name="project_id" id="create_task_project_id">
-                <input type="hidden" name="outcome_id" id="create_task_outcome_id">
-                <input type="hidden" name="output_id" id="create_task_output_id">
-                <input type="hidden" name="activity_id" id="create_task_activity_id">
+                <input type="hidden" name="project_id" value="{{ Helper::encrypt_id($activity->project->id) }}">
+                <input type="hidden" name="outcome_id" value="{{ Helper::encrypt_id($activity->outcome->id) }}">
+                <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($activity->output->id) }}">
+                <input type="hidden" name="activity_id" value="{{ Helper::encrypt_id($activity->id) }}">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" id="title" name="title" class="form-control" required autoComplete="off">

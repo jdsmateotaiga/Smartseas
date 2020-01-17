@@ -3,12 +3,8 @@
     <div class="col-md-4 workplan-list">
         <div class="layers bd bgc-white pB-20 pL-20 pR-20">
             <div class="controls mT-5 mB-5">
-              @if ( auth()->user()->hasRole('partner') )
-                <a href="{{ action('ProjectController@partnerShowProject', Helper::encrypt_id($project->id)) }}" title="View this Project"><i class="c-green-500 ti-eye"></i></a>
-              @endif
               @if( !auth()->user()->hasRole('partner') )
                  <a href="{{ route('report.show', ['id' => Helper::encrypt_id($project->id)]) }}"><i class="c-green-500 ti-agenda"></i></a>
-                 <a href="{{ route('project.show', ['id' => Helper::encrypt_id($project->id)]) }}" title="View this Project"><i class="c-green-500 ti-eye"></i></a>
                  <a class="lib mL-5" href="{{ route('project.edit', ['id' => Helper::encrypt_id($project->id)]) }}" title="Edit this Project"><i class="c-blue-500 ti-pencil-alt"></i></a>
                  @if($project->active == 1)
                  <form style="display: inline-block; vertical-align: middle;" action="{{ action('ProjectController@deactivate', [ 'id'=> Helper::encrypt_id($project->id)] )}}" method="post">
@@ -24,7 +20,15 @@
             </div>
             <div class="layer w-100 mB-10">
                 <h5 class="lh-1" title="{{ $project->title }}" style="height: 20px; overflow:hidden;">
-                  {{ $project->title }}
+                  @if ( auth()->user()->hasRole('partner') )
+                    <a href="{{ action('ProjectController@partnerShowProject', Helper::encrypt_id($project->id)) }}">
+                      {{ $project->title }}
+                    </a>
+                  @else
+                    <a href="{{ route('project.show', ['id' => Helper::encrypt_id($project->id)]) }}">
+                      {{ $project->title }}
+                    </a>
+                  @endif
                 </h5>
                 <div class="row">
                     <div class="col-md-6">

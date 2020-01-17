@@ -8,9 +8,9 @@
       </div>
       <div class="modal-body">
           {{ csrf_field() }}
-          <input type="hidden" name="project_id" id="create_activity_project_id" value="">
-          <input type="hidden" name="outcome_id" id="create_activity_outcome_id" value="">
-          <input type="hidden" name="output_id" id="create_activity_output_id" value="">
+          <input type="hidden" name="project_id" value="{{ Helper::encrypt_id($output->project->id) }}">
+          <input type="hidden" name="outcome_id" value="{{ Helper::encrypt_id($output->outcome->id) }}">
+          <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($output->id) }}">
           <div class="form-group">
               <label for="activity_title">Activity/Sub-Activity Description</label>
               <input type="text" id="activity_title" name="title" class="form-control" required>

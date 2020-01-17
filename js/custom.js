@@ -136,26 +136,6 @@ $(document).ready(function(){
         });
     });
 
-    $('.create-activity').click(function(){
-        var project_id = $(this).data('project_id'),
-            outcome_id = $(this).data('outcome_id'),
-            output_id = $(this).data('output_id');
-        $('#create_activity_project_id').val(project_id);
-        $('#create_activity_outcome_id').val(outcome_id);
-        $('#create_activity_output_id').val(output_id);
-    });
-
-    $('.create-task').click(function(){
-      var project_id = $(this).data('project_id'),
-          outcome_id = $(this).data('outcome_id'),
-          output_id = $(this).data('output_id'),
-          activity_id = $(this).data('activity_id');
-          $('#create_task_project_id').val(project_id);
-          $('#create_task_outcome_id').val(outcome_id);
-          $('#create_task_output_id').val(output_id);
-          $('#create_task_activity_id').val(activity_id);
-    });
-
     // See more in descriptions
     $('.see-more').click(function(){
         var content  = $(this).data('content');

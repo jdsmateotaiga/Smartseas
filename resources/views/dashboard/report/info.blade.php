@@ -1,6 +1,6 @@
 <div style="padding: 0 20px;">
 <h3>{{ $project->title }}</h3>
-<table id="report_detail" style="margin-bottom: 1em;">
+<table id="report_detail" style="margin-bottom: 1em; width: 100% ">
   <tr>
     <th>Project ID: </th>
     <td>{{ $project->project_id }}</td>

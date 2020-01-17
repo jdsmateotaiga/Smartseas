@@ -5,10 +5,6 @@
         <a class="btn btn-success create-task pX-5 pY-2"
         data-toggle="modal"
         data-target="#create-task"
-        data-project_id="{{ Helper::encrypt_id($activity->project->id) }}"
-        data-outcome_id="{{ Helper::encrypt_id($activity->outcome->id) }}"
-        data-output_id="{{ Helper::encrypt_id($activity->output->id) }}"
-        data-activity_id="{{ Helper::encrypt_id($activity->id) }}"
         >
           <i class="ti-plus"></i>
         </a>

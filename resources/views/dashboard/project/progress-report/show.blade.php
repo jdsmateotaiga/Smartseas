@@ -25,7 +25,10 @@
     </style>
   </head>
   <body id="progress_report">
-      wakawaku is on fire
+      @include('dashboard.project.progress-report.report.info')
+      @include('dashboard.project.progress-report.report.report')
+
+      @include('dashboard.project.risk-log.index', ['project' => $progress_report->project])
 
       <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
       <script type="text/javascript" src="{{ asset('js/vendor.js') }}"></script>

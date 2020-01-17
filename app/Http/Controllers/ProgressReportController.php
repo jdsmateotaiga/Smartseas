@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProgressReport;
+use App\User;
 use Helper;
 use Validator;
 
@@ -68,8 +69,11 @@ class ProgressReportController extends Controller
         //
         $decrypt_id_progress_report = Helper::decrypt_id($id);
         $progress_report = ProgressReport::find($decrypt_id_progress_report);
+        $partners = explode(',', $progress_report->project->partners);
+        $users = User::find($partners);
         return view('dashboard.project.progress-report.show')
-              ->with('progress_report', $progress_report);
+              ->with('progress_report', $progress_report)
+              ->with('users', $users);
     }
 
     /**

@@ -139,11 +139,13 @@ class OutputController extends Controller
       $output_decrypt_id = Helper::decrypt_id($id);
       if(auth()->user()->hasRole('admin')) {
           $output = Output::find($output_decrypt_id);
-          return view($view)->with('output', $output);
+          return view($view)
+          ->with('output', $output);
       } else {
           $output = Output::where('id', $output_decrypt_id)->where('active', 1)->first();
           if($output) {
-            return view('dashboard.project.outcome.show')->with('outcome', $output);
+            return view($view)
+            ->with('output', $output);
           } else {
             return response()->view('errors.404', [], 404);
           }

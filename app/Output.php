@@ -23,6 +23,10 @@ class Output extends Model
         return $this->hasOne('App\Outcome', 'id', 'outcome_id');
     }
 
+    public function output_report() {
+      return $this->hasMany('App\ProgressReportOutput');
+    }
+
     protected $guarded = array();
     protected $table = 'outputs';
 }

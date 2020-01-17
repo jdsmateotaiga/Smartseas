@@ -141,12 +141,12 @@ class OutcomeController extends Controller
       $code = BudgetCode::all();
       if(auth()->user()->hasRole('admin')) {
           $outcome = Outcome::find($outcome_decrypt_id);
-          return view('dashboard.project.outcome.show')
+          return view($view)
                 ->with('outcome', $outcome);
       } else {
           $outcome = Outcome::where('id', $outcome_decrypt_id)->where('active', 1)->first();
           if($outcome) {
-            return view('dashboard.project.outcome.show')
+            return view($view)
                   ->with('outcome', $outcome);
           } else {
             return response()->view('errors.404', [], 404);

@@ -88,6 +88,8 @@
                 </tbody>
             </table>
         </div>
+    @else
+      No active risk log!
     @endif
 </div>
 @include('dashboard.project.risk-log.create')

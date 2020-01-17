@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2020 at 01:43 AM
+-- Generation Time: Jan 17, 2020 at 11:47 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -140,7 +140,8 @@ INSERT INTO `notifications` (`id`, `user_id`, `to_user_id`, `body`, `url`, `stat
 (17, 1, '27', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkFpT2ZUN1JwUEQ2ZG5ZREdxS3psNVE9PSIsInZhbHVlIjoib0t5TkZJdFBQNG4rWnRWaUVoQXNpQT09IiwibWFjIjoiYzllMjhiZTc0Y2M1MjYxYzdjZjQ4Y2JjZTUxY2IyM2Y5N2I0MWJjZDMzMDFjNzhlMzM0NTQxMTUwZWY1OWE5OCJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
 (18, 1, '28', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6Ilp3MGxLaHFZWmlldkNwZEZNcjZnNnc9PSIsInZhbHVlIjoiWUtyenBUMExOMUl4YkZLK3VhMG5sZz09IiwibWFjIjoiMDI2MmQ4ZjVmYzc3NzM3MmRmZjFmMzgyY2Y3ZmEzN2VmNGU3MDhkN2E4YTAxMmNjYTFkOTgxZTFmZDY0YzEwOSJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
 (19, 1, '29', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IjI5b3E3YjVuZ2JZU3lGOXREOUU3dFE9PSIsInZhbHVlIjoid2hNR2poTXZVbU9GcDhOZHBxYmtOQT09IiwibWFjIjoiMmMwZmYwZjViNmMyNzYyMjViYzkzM2E0MTA2ZmFjOWEyMTRmYTM1MTliMzdhNmQ2NDI0ODAwZmI3OGZjYTQ3OCJ9', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
-(20, 1, '30', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkY0TnZ3RFd4d1JtTmxmVUVQSW1rV0E9PSIsInZhbHVlIjoiQ3Z2dUQ2Q1FWXC9BdExGbFpZVlpsWXc9PSIsIm1hYyI6ImEyYTA4MmNmNTYzMGVhZmE4YjY4YWM3YTBjMTFhNmFlNzAzMWM5ODQ0OTIwNTRhNzJhY2QyMzQ2OWJkZjczYTIifQ==', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16');
+(20, 1, '30', 'You has been added in new project \"gdfg\"', '/project/partner/eyJpdiI6IkY0TnZ3RFd4d1JtTmxmVUVQSW1rV0E9PSIsInZhbHVlIjoiQ3Z2dUQ2Q1FWXC9BdExGbFpZVlpsWXc9PSIsIm1hYyI6ImEyYTA4MmNmNTYzMGVhZmE4YjY4YWM3YTBjMTFhNmFlNzAzMWM5ODQ0OTIwNTRhNzJhY2QyMzQ2OWJkZjczYTIifQ==', 1, '2020-01-17 13:07:16', '2020-01-17 13:07:16'),
+(21, 1, '29', 'SmartSeas PH added asd in activity Development of MPAN Planning tool', '/project/outcome/partner/eyJpdiI6InBFWlhXenNxM0ZIclVobEFHcDZKNEE9PSIsInZhbHVlIjoiUys1WEY2WDlHcXp0aEo4WHJ2UThLQT09IiwibWFjIjoiNzYyOWE1ZjNmOGJjZmMwY2QxMDlkZGUyYmQ5Yzg3M2QzMGNkY2M0NzEyOWUzZWIzYzNlYTdlMTEzNTQ2ZjM4MCJ9', 1, '2020-01-18 12:26:16', '2020-01-18 12:26:16');
 
 -- --------------------------------------------------------
 
@@ -227,6 +228,7 @@ CREATE TABLE `progress_reports` (
   `technical_accomplishments` varchar(5000) DEFAULT NULL,
   `reporting_date` varchar(255) DEFAULT NULL,
   `active` int(255) NOT NULL DEFAULT 1,
+  `submitted` int(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -235,8 +237,8 @@ CREATE TABLE `progress_reports` (
 -- Dumping data for table `progress_reports`
 --
 
-INSERT INTO `progress_reports` (`id`, `user_id`, `project_id`, `title`, `results`, `technical_accomplishments`, `reporting_date`, `active`, `created_at`, `updated_at`) VALUES
-(1, 26, 1, '1234', '1234', '1234', '1234', 1, '2020-01-17 15:18:07', '2020-01-17 16:40:56');
+INSERT INTO `progress_reports` (`id`, `user_id`, `project_id`, `title`, `results`, `technical_accomplishments`, `reporting_date`, `active`, `submitted`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, 'QUARTER PROGRESS REPORT[1]', '1234', '1234', 'April - June 2017', 1, 1, '2020-01-17 15:18:07', '2020-01-18 09:34:09');
 
 -- --------------------------------------------------------
 
@@ -267,6 +269,7 @@ CREATE TABLE `progress_report_outputs` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` int(255) NOT NULL,
+  `outcome_id` int(1) NOT NULL,
   `output_id` int(255) NOT NULL,
   `indicator` varchar(3000) DEFAULT NULL,
   `year` varchar(255) DEFAULT NULL,
@@ -276,6 +279,13 @@ CREATE TABLE `progress_report_outputs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `progress_report_outputs`
+--
+
+INSERT INTO `progress_report_outputs` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `indicator`, `year`, `baseline`, `quarter_milestone`, `annual_target`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, 1, 1, 'test', 'test', 'test', 'test', 'test', NULL, '2020-01-17 19:12:26');
 
 -- --------------------------------------------------------
 
@@ -307,7 +317,7 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `user_id`, `title`, `project_id`, `award_id`, `start_date`, `completion_date`, `implementing_partner`, `partners`, `objective`, `total_project_fund`, `awp_budget`, `donors`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, 'ad', 'asd', 'asd', 1, '2019-12-28 13:18:59', '2020-01-17 11:48:00'),
+(1, 1, 'Strengthening the Marine Protected Areas to Conserve Marine Key Biodiversity Areas', '00088065', '00076994', '2015', '2020', 'Department of Environment and Natural Resources - Biodiversity Management Bureau', '23,24,25,26,27,28,29,30', NULL, 'USD 8,000,000', 'USD   1,446,781.57 ', 'GEF- UNDP', 1, '2019-12-28 13:18:59', '2020-01-17 11:48:00'),
 (2, 1, 'gdfg', 'dgfdgd', 'dgdfg', '2024', '2024', 'dfg', '23,24,25,26,27,28,29,30', 'asd', 'gdfgdg', 'gdfg', 'dfgfdg', 0, '2020-01-17 13:07:16', '2020-01-17 13:07:23');
 
 -- --------------------------------------------------------
@@ -336,6 +346,7 @@ CREATE TABLE `risk_logs` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` varchar(255) NOT NULL,
+  `progress_report_id` int(255) NOT NULL DEFAULT 0,
   `description` varchar(255) DEFAULT NULL,
   `date_identified` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
@@ -354,8 +365,8 @@ CREATE TABLE `risk_logs` (
 -- Dumping data for table `risk_logs`
 --
 
-INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
-(1, 26, '1', 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life.', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-16 22:11:48', '2020-01-17 14:11:48');
+INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `progress_report_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
+(1, 26, '1', 1, 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life.', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-17 21:57:05', '2020-01-17 14:11:48');
 
 -- --------------------------------------------------------
 
@@ -415,8 +426,7 @@ CREATE TABLE `tasks` (
 
 INSERT INTO `tasks` (`id`, `user_id`, `partner_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `title`, `deliverables`, `fund_source`, `code_id`, `unit_cost`, `status`, `progress`, `timeline`, `unit_measurement`, `month`, `active`, `created_at`, `updated_at`) VALUES
 (2, 1, 26, 1, '1', 1, 1, 'Development of MPAN Planning Toolkit', NULL, 'GEF', 1, '120000', '', '0', '1,4', '1', '1-1-700000.50,2-2-700000,--,--,--,--,--,--,--,--,--,12-1-90000', 1, '2020-01-02 21:50:41', '2020-01-03 09:57:42'),
-(3, 1, 25, 1, '2', 2, 2, 'Identify management activities that can be done collectively at the alliance level rather than at per LGU level.', 'a) Inventory of management activities in 4 LGUs and their costs (BATMan)', 'GEF', 1, '20000', '', '0', '1,3', '1', '--,--,3-1-20000,--,--,--,--,--,--,--,--,--', 1, '2020-01-03 17:13:06', '2020-01-03 14:08:29'),
-(4, 1, 25, 1, '1', 1, 1, 'as', 'as', 'as', 1, '5', '', '0', '1', '1', '1-12-50000,--,--,--,--,--,--,--,--,--,--,--', 1, '2020-01-04 11:18:03', '2020-01-04 11:18:03');
+(3, 1, 25, 1, '2', 2, 2, 'Identify management activities that can be done collectively at the alliance level rather than at per LGU level.', 'a) Inventory of management activities in 4 LGUs and their costs (BATMan)', 'GEF', 1, '20000', '', '0', '1,3', '1', '--,--,3-1-20000,--,--,--,--,--,--,--,--,--', 1, '2020-01-03 17:13:06', '2020-01-03 14:08:29');
 
 -- --------------------------------------------------------
 
@@ -472,13 +482,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code`, `partner_name`, `partner_name_address`, `partner_admin_name`, `partner_admin_address`, `partner_admin_gender`, `partner_admin_position`, `partner_admin_image`, `partner_admin_ID`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
-(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'YlfSfQXPoq19L9eG9IvnhFavPnMKersYM47vcHWpvOeKLyFY517PC2id8QNM', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
+(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'GwLm8P9dOoEZBnXNu4IVVTl2EjxfimeQ5GoiHenUPIhf6dscvUqHWNI9Vtg3', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
 (19, 1, 'projectmanager1@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'PM1', 'ProjectManager1', NULL, 'ProjectManager1', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, 'TB5E9PP2BApEDvcZQDdIt1gzEhyozGKTnpr13pVEJWQCVGGTzRQrxSGLOUr7', 1, '2019-08-11 16:55:34', '2019-08-17 14:29:06'),
 (20, 1, 'projectmanager2@gmail.com', '$2y$10$wBXx6OlZE3gh/g.2/bM00eK32gPoXyIA9hRyUHcoTLHH0lVNZ6/Li', 'PM2', 'ProjectManager2', NULL, 'ProjectManager2', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, NULL, 1, '2019-08-11 17:17:18', '2019-08-17 13:49:57'),
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
 (24, 1, 'nfrd@smartseas.ph', '$2y$10$7Oh29ZyhF9O.V1f.IP/EyetyA.vPSBTzQb5P2AwXGkoyq9.p6Oa6S', 'NFRD', 'National Fisheries Research and Development Institute - Southern Palawan', NULL, 'National Fisheries Research and Development Institute - Southern Palawan', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:35:48', '2019-09-07 04:35:48'),
 (25, 1, 'rp@smartseas.ph', '$2y$10$.E3hBfxFbAiyZLDUVTwv3.eLiZr46ZcaNOTBfI1Pm/YwBXzK1k0T.', 'RP', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:10', '2019-09-07 04:37:10'),
-(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
+(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, 'lbBv1tjWm5pG1FMAH52RqqgDePJBunfU02krPSgWuBuYz8cQRgnybsFpgBtb', 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
 (27, 1, 'wwf@smartseas.ph', '$2y$10$UPAo4z7IjZC7xlK0i8Pc7..GEXawx5yyJHOdV4g9Hk.5r6Xm.C0Ze', 'WWF', 'WWF - Davao Gulf', NULL, 'WWF - Davao Gulf', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:38:53', '2019-09-07 04:38:53'),
 (28, 1, 'hf@smartseas.ph', '$2y$10$wLtv/WG08rx2bs6B0eVK9uL12HZUKVJuAcIbVHwSwvlNjE0MTGvpm', 'HF', 'Haribon Foundation - Lanuza Bay', NULL, 'Haribon Foundation - Lanuza Bay', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:39:42', '2019-09-07 04:39:42'),
 (29, 1, 'fin@smartseas.ph', '$2y$10$kBngeCxfDong0M1EOSHbsuUx.IMUmGxuBHuNmCmT11iLhfnUA4FPq', 'FIN', 'Fishbase Information Network (FIN)', NULL, 'Fishbase Information Network (FIN)', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:41:01', '2019-09-07 04:41:01'),
@@ -640,7 +650,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `budget_codes`
@@ -658,7 +668,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `outcomes`
@@ -688,7 +698,7 @@ ALTER TABLE `progress_report_activities`
 -- AUTO_INCREMENT for table `progress_report_outputs`
 --
 ALTER TABLE `progress_report_outputs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -706,7 +716,7 @@ ALTER TABLE `remarks`
 -- AUTO_INCREMENT for table `risk_logs`
 --
 ALTER TABLE `risk_logs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -718,7 +728,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `unit_measurements`

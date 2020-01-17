@@ -19,11 +19,11 @@
                 </div>
                 <div class="form-group">
                     <label for="results">Indicative/Emerging Results of the Project</label>
-                    <textarea name="results" id="results" class="form-control" rows="10"></textarea>
+                    <textarea name="results" id="results" class="form-control" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="technical_accomplishments">Technical Accomplishments</label>
-                    <textarea name="technical_accomplishments" id="technical_accomplishments" class="form-control" rows="10"></textarea>
+                    <textarea name="technical_accomplishments" id="technical_accomplishments" class="form-control" rows="5"></textarea>
                 </div>
 
             </div>

@@ -20,12 +20,19 @@
       @if($outcome->active == 1)
         @php $count++; @endphp
         <div class="bgc-white p-10 bd mT-5">
-            <h5 class="lh-1 mB-5 lib"><span class="small bold">{{ $count }}</span>. {{ $outcome->title }}</h5>&nbsp;
-            @if ( auth()->user()->hasRole('partner') )
-              <a href="{{ action('OutcomeController@partnerShowOutcome', Helper::encrypt_id($outcome->id)) }}?count={{ $count }}" title="View this Outcome"><i class="c-green-500 ti-eye"></i></a>
-            @endif
+            <h5 class="lh-1 mB-5 lib"><span class="small bold">{{ $count }}</span>.
+              @if ( auth()->user()->hasRole('partner') )
+                <a href="{{ action('OutcomeController@partnerShowOutcome', Helper::encrypt_id($outcome->id)) }}?count={{ $count }}" title="View this Outcome">
+                  {{ $outcome->title }}
+                </a>
+              @else
+                <a href="{{ route('outcome.show', ['id' => Helper::encrypt_id($outcome->id)]) }}?count={{ $count }}" title="View this Outcome">
+                  {{ $outcome->title }}
+                </a>
+              @endif
+            </h5>
+
             @if( !auth()->user()->hasRole('partner') )
-              <a href="{{ route('outcome.show', ['id' => Helper::encrypt_id($outcome->id)]) }}?count={{ $count }}" title="View this Outcome"><i class="c-green-500 ti-eye"></i></a>
               <a class="lib mL-10 modal-edit"
               data-toggle="modal"
               data-target="#edit-outcome"

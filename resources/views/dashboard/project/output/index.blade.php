@@ -20,12 +20,20 @@
       @if($output->active == 1)
         @php $count++; @endphp
         <div class="bgc-white p-10 bd mT-5">
-            <h5 class="lh-1 mB-5 lib">@if(isset($_GET['count'])) <span class="small bold">{{ $_GET['count'] }}.{{ $count }}</span> @endif {{ $output->title }}</h5>
-            @if ( auth()->user()->hasRole('partner') )
-              <a href="{{ action('OutputController@partnerShowOutput', Helper::encrypt_id($output->id)) }}@if(isset($_GET['count'])) ?count={{ $_GET['count'] }}.{{ $count }} @endif" title="View this Output"><i class="c-green-500 ti-eye"></i></a>
-            @endif
+            <h5 class="lh-1 mB-5 lib">@if(isset($_GET['count'])) <span class="small bold">{{ $_GET['count'] }}.{{ $count }}</span> @endif
+              @if ( auth()->user()->hasRole('partner') )
+                <a href="{{ action('OutputController@partnerShowOutput', Helper::encrypt_id($output->id)) }}@if(isset($_GET['count'])) ?count={{ $_GET['count'] }}.{{ $count }} @endif" title="View this Output">
+                  {{ $output->title }}
+                </a>
+              @else
+              <a href="{{ route('output.show', ['id' => Helper::encrypt_id($output->id)]) }}@if(isset($_GET['count']))?count={{ $_GET['count'] }}.{{ $count }} @endif" title="View this Output">
+                {{ $output->title }}
+              </a>
+              @endif
+            </h5>
+
             @if( !auth()->user()->hasRole('partner') )
-              <a href="{{ route('output.show', ['id' => Helper::encrypt_id($output->id)]) }}@if(isset($_GET['count']))?count={{ $_GET['count'] }}.{{ $count }} @endif" title="View this Output"><i class="c-green-500 ti-eye"></i></a>
+
               <a class="lib mL-10 modal-edit"
               data-toggle="modal"
               data-target="#edit-output"

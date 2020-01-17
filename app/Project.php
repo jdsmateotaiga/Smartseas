@@ -16,23 +16,31 @@ class Project extends Model
     }
 
     public function risk_logs() {
-        $query = $this->hasMany('App\RiskLog');
-        if(auth()->user()->hasRole('admin')) {
-          return $query->where('active', 1);
-        } else {
+      $query = $this->hasMany('App\RiskLog');
+      if(auth()->user()->hasRole('partner')) {
           return $query->where([
-            ['user_id', auth()->user()->id],
-            ['active', 1],
-          ]);
-        }
+              ['user_id', auth()->user()->id],
+              ['active', 1],
+            ]);
+      } else {
+          return $this->hasMany('App\RiskLog')
+            ->where('active', 1);
+      }
     }
 
     public function progress_reports() {
-      return $this->hasMany('App\ProgressReport')
-            ->where([
+      $query = $this->hasMany('App\ProgressReport');
+      if(auth()->user()->hasRole('partner')) {
+        return $query->where([
               ['user_id', auth()->user()->id],
               ['active', 1]
             ]);
+      } else {
+        return $query->where([
+              ['submitted', 1],
+              ['active', 1]
+            ]);
+      }
     }
 
     public function owner() {

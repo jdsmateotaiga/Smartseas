@@ -25,6 +25,10 @@ class Activity extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
 
+    public function activity_report() {
+      return $this->hasMany('App\ProgressReportActivity', 'id', 'activity_id');
+    }
+
     public function tasks() {
       if(count($_GET) != 0) {
         $temp = '';

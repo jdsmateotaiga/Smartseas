@@ -57,5 +57,7 @@
 @endif
   @include('dashboard.project.outcome.index')
   @include('dashboard.project.progress-report.index')
-  @include('dashboard.project.risk-log.index')
+  @if(!auth()->user()->hasRole('partner'))
+    @include('dashboard.project.risk-log.index')
+  @endif
 @stop
