@@ -1,5 +1,5 @@
 
-  <div class="mT-30 mB-10">
+  <div class="mT-10 mB-10">
     <div class="layer w-100 text-left">
       <h4 class="lh-1 mB-5 lib vam">Create Project Output Indicator</h4>&nbsp;
       <a href="#create-output-indicator"

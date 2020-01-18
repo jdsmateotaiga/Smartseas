@@ -1,6 +1,6 @@
 <div class="modal fade" id="create-output-indicator" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
-      <form action="{{ action('RiskLogController@store') }}" method="POST">
+      <form action="{{ action('ProgressReportOutputController@store') }}" method="POST">
         {{ csrf_field() }}
           <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="project_id" value="{{ Helper::encrypt_id($progress_report->project->id) }}">
-                <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($outcome->id) }}">
+                <input type="hidden" name="outcome_id" value="{{ Helper::encrypt_id($outcome->id) }}">
                 <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($output->id) }}">
                 <div class="form-group">
                     <label for="description">Description</label>
