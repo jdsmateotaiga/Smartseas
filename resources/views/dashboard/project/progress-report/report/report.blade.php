@@ -33,3 +33,4 @@
     </div>
     @endforeach
 </div>
+  @include('dashboard.project.progress-report.report.output.edit')

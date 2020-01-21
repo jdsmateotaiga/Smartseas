@@ -12,16 +12,33 @@
                 <input type="hidden" name="outcome_id" value="{{ Helper::encrypt_id($outcome->id) }}">
                 <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($output->id) }}">
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" class="form-control" autofocus ></textarea>
+                    <label for="indicator">Project Output Indicator/s</label>
+                    <textarea id="indicator" name="indicator" class="form-control" autofocus ></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type</label>
-                    <input type="text" id="type" name="type" class="form-control" >
+                  <label for="year">Start Date</label>
+                  <select class="form-control" id="year" name="year" required autoComplete="off">
+                      <option disabled selected>Choose Year</option>
+                      @php
+                        for($i = 2010; $i <= 2100; $i++) {
+                      @endphp
+                          <option value="{{ $i }}">{{ $i }}</option>
+                      @php
+                        }
+                      @endphp
+                  </select>
                 </div>
                 <div class="form-group">
-                    <label for="response">Countermeasures/Management Response</label>
-                    <textarea id="response" name="response" class="form-control" ></textarea>
+                    <label for="baseline">Baseline</label>
+                    <textarea id="baseline" name="baseline" class="form-control" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="quarter_milestone">Quarter Milestone</label>
+                    <textarea id="quarter_milestone" name="quarter_milestone" class="form-control" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="annual_target">Annual Target</label>
+                    <textarea id="annual_target" name="annual_target" class="form-control" ></textarea>
                 </div>
             </div>
             <div class="modal-footer">

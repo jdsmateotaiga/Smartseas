@@ -247,6 +247,11 @@ $(document).ready(function(){
                      $('#edit_'+keys[x]).val(data[keys[x]]);
                     }
                     break;
+                  case '#edit-output-indicator':
+                    for(var x  = 0; x < keys.length; x++) {
+                     $('#edit_output_'+keys[x]).val(data[keys[x]]);
+                    }
+                    break;
               }
           }
         });

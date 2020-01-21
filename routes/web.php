@@ -36,6 +36,8 @@ use App\User;
     Route::post('progress_report/deactivate/{id}', 'ProgressReportController@deactivate');
     Route::get('view_progress_report/{id}', 'ProgressReportController@show')->name('view_progress_report.show');
 
+    Route::resource('progress_report_output', 'ProgressReportOutputController');
+
     Route::group(['middleware' => 'roles', 'roles'=>['partner']], function () {
 
       Route::get('project/partner/{id}', 'ProjectController@partnerShowProject');
@@ -46,7 +48,6 @@ use App\User;
     });
 
     Route::group(['middleware' => 'roles', 'roles'=>['admin', 'project_manager']], function () {
-
 
 
         Route::post('register', 'Auth\RegisterController@register')->name('register');

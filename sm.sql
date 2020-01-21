@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2020 at 11:47 PM
+-- Generation Time: Jan 20, 2020 at 11:11 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -285,7 +285,7 @@ CREATE TABLE `progress_report_outputs` (
 --
 
 INSERT INTO `progress_report_outputs` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `indicator`, `year`, `baseline`, `quarter_milestone`, `annual_target`, `created_at`, `updated_at`) VALUES
-(1, 26, 1, 1, 1, 'test', 'test', 'test', 'test', 'test', NULL, '2020-01-17 19:12:26');
+(2, 26, 1, 1, 1, 'ggss', '2012', 'asd', 'asd', 'asd', '2020-01-21 11:07:54', '2020-01-21 14:07:56');
 
 -- --------------------------------------------------------
 
@@ -488,7 +488,7 @@ INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
 (24, 1, 'nfrd@smartseas.ph', '$2y$10$7Oh29ZyhF9O.V1f.IP/EyetyA.vPSBTzQb5P2AwXGkoyq9.p6Oa6S', 'NFRD', 'National Fisheries Research and Development Institute - Southern Palawan', NULL, 'National Fisheries Research and Development Institute - Southern Palawan', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:35:48', '2019-09-07 04:35:48'),
 (25, 1, 'rp@smartseas.ph', '$2y$10$.E3hBfxFbAiyZLDUVTwv3.eLiZr46ZcaNOTBfI1Pm/YwBXzK1k0T.', 'RP', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:10', '2019-09-07 04:37:10'),
-(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, 'lbBv1tjWm5pG1FMAH52RqqgDePJBunfU02krPSgWuBuYz8cQRgnybsFpgBtb', 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
+(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, 'OciIVMXBbWUadt4E5yBOCZBANliV4DBHqurv3whtPC8MqxRVVeSC51c0sTMO', 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
 (27, 1, 'wwf@smartseas.ph', '$2y$10$UPAo4z7IjZC7xlK0i8Pc7..GEXawx5yyJHOdV4g9Hk.5r6Xm.C0Ze', 'WWF', 'WWF - Davao Gulf', NULL, 'WWF - Davao Gulf', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:38:53', '2019-09-07 04:38:53'),
 (28, 1, 'hf@smartseas.ph', '$2y$10$wLtv/WG08rx2bs6B0eVK9uL12HZUKVJuAcIbVHwSwvlNjE0MTGvpm', 'HF', 'Haribon Foundation - Lanuza Bay', NULL, 'Haribon Foundation - Lanuza Bay', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:39:42', '2019-09-07 04:39:42'),
 (29, 1, 'fin@smartseas.ph', '$2y$10$kBngeCxfDong0M1EOSHbsuUx.IMUmGxuBHuNmCmT11iLhfnUA4FPq', 'FIN', 'Fishbase Information Network (FIN)', NULL, 'Fishbase Information Network (FIN)', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:41:01', '2019-09-07 04:41:01'),
@@ -698,7 +698,7 @@ ALTER TABLE `progress_report_activities`
 -- AUTO_INCREMENT for table `progress_report_outputs`
 --
 ALTER TABLE `progress_report_outputs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -716,7 +716,7 @@ ALTER TABLE `remarks`
 -- AUTO_INCREMENT for table `risk_logs`
 --
 ALTER TABLE `risk_logs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `roles`

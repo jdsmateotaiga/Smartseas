@@ -11,29 +11,39 @@
     </div>
   </div>
   @include('dashboard.project.progress-report.report.output.create')
-  @include('dashboard.project.progress-report.report.output.edit')
 @if(!$output->output_report->isEmpty())
   <div class="mB-10">
     <table style="width: 100% ">
       <thead>
           <tr>
-            <th>Project Output Indicator/s</th>
-            <th colspan="2">Baseline</th>
-            <th>Quarter Milestone[2]</th>
-            <th>Annual Target</th>
+            <th class="text-center">Project Output Indicator/s</th>
+            <th class="text-center" colspan="2">Baseline</th>
+            <th class="text-center">Quarter Milestone</th>
+            <th class="text-center">Annual Target</th>
+            <th class="text-center">Actions</th>
           </tr>
       </thead>
       <tbody>
-          <tr colspan="5">
-
-          </tr>
+          @foreach($output->output_report as $output)
           <tr>
-            <td>test</td>
-            <td>2012</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            <td>{{ $output->indicator }}</td>
+            <td>{{ $output->year }}</td>
+            <td>{{ $output->baseline }}</td>
+            <td>{{ $output->quarter_milestone }}</td>
+            <td>{{ $output->annual_target }}</td>
+            <td>
+              <a class="btn btn-primary modal-edit" data-toggle="modal" data-target="#edit-output-indicator" href="#edit-output-indicator"
+              data-edit-url="{{ action('ProgressReportOutputController@edit', [ 'id' => Helper::encrypt_id($output->id) ]) }}"
+              data-action-url="{{ action('ProgressReportOutputController@update', [ 'id' => Helper::encrypt_id($output->id) ]) }}"
+              ><span class="ti-pencil"></span></a>
+              <form style="display: inline-block;" action="{{ action('ProgressReportOutputController@destroy', [ 'id'=> Helper::encrypt_id($output->id)] )}}" method="post">
+                  {{ method_field('DELETE') }}
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this item?');"><span class="ti-trash"></span></button>
+              </form>
+            </td>
           </tr>
+          @endforeach
       </tbody>
     </table>
   </div>
