@@ -13,13 +13,13 @@
           @if(!$projects->isEmpty())
           @foreach($projects as $project)
             <div class="bgc-white p-10 bd mT-5" @if($project->active == 0) style="border-color: red!important;" @endif>
-                  <h5 class="lh-1 mB-5 lib">{{ $project->title }}</h5>&nbsp;
-                  @if ( auth()->user()->hasRole('partner') )
-                    <a href="{{ action('ProjectController@partnerShowProject', Helper::encrypt_id($project->id)) }}" title="View this project"><i class="c-green-500 ti-eye"></i></a>
-                  @endif
-                  @if( !auth()->user()->hasRole('partner') )
-                    <a href="{{ route('project.show', ['id' => Helper::encrypt_id($project->id)]) }}" title="View this project"><i class="c-green-500 ti-eye"></i></a>
-                  @endif
+                  <h5 class="lh-1 mB-5 lib">
+                    @if ( auth()->user()->hasRole('partner') )
+                      <a href="{{ action('ProjectController@partnerShowProject', Helper::encrypt_id($project->id)) }}" title="View this project">{{ $project->title }}</a>
+                    @else ( !auth()->user()->hasRole('partner') )
+                      <a href="{{ route('project.show', ['id' => Helper::encrypt_id($project->id)]) }}" title="View this project">{{ $project->title }}</a>
+                    @endif
+                  </h5>
                   <div class="row">
                       <p class="col-md-12 mB-0"><strong>Project objective: </strong>{{ Helper::the_excerpt($project->objective, 20) }}</p>
                   </div>

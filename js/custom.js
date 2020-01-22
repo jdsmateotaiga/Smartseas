@@ -252,6 +252,11 @@ $(document).ready(function(){
                      $('#edit_output_'+keys[x]).val(data[keys[x]]);
                     }
                     break;
+                  case '#edit-activity-report':
+                    for(var x  = 0; x < keys.length; x++) {
+                     $('#edit_pra_'+keys[x]).val(data[keys[x]]);
+                    }
+                    break;
               }
           }
         });
@@ -306,5 +311,30 @@ $(document).ready(function(){
       $(this).parents('.risk-container').remove();
     });
 
+    $('.modal-create').click(function(e){
+      var target_id  = $(this).data('target');
+      var project_id = $(this).data('project_id'),
+          outcome_id = $(this).data('outcome_id'),
+          output_id = $(this).data('output_id');
+      switch(target_id) {
+        case '#create-output-indicator':
+                $('#pro_project_id').val(project_id);
+                $('#pro_outcome_id').val(outcome_id);
+                $('#pro_output_id').val(output_id);
+        break;
+        case '#create-activity-report':
+              var activity_id = $(this).data('activity_id');
+              $('#pra_project_id').val(project_id);
+              $('#pra_outcome_id').val(outcome_id);
+              $('#pra_output_id').val(output_id);
+              $('#pra_activity_id').val(activity_id);
+        break;
+        default:
+          $('#pro_project_id').val('');
+          $('#pro_outcome_id').val('');
+          $('#pro_output_id').val('');
+        break;
+      }
+    });
 
 });

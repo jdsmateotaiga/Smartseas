@@ -29,8 +29,13 @@
           @endif
         </p>
         @include('dashboard.project.progress-report.report.output.index')
+        @include('dashboard.project.progress-report.report.activity.index')
       @endforeach
     </div>
     @endforeach
 </div>
-  @include('dashboard.project.progress-report.report.output.edit')
+@include('dashboard.project.progress-report.report.output.create')
+@include('dashboard.project.progress-report.report.output.edit')
+
+@include('dashboard.project.progress-report.report.activity.create')
+@include('dashboard.project.progress-report.report.activity.edit')

@@ -1,16 +1,17 @@
-
-  <div class="mT-10 mB-10">
-    <div class="layer w-100 text-left">
-      <h4 class="lh-1 mB-5 lib vam">Create Project Output Indicator</h4>&nbsp;
-      <a href="#create-output-indicator"
-      data-toggle="modal"
-      data-target="#create-output-indicator"
-      class="modal-create btn btn-success pX-5 pY-2">
-        <i class="ti-plus"></i>
-      </a>
-    </div>
+<div class="mT-10 mB-10">
+  <div class="layer w-100 text-left">
+    <h4 class="lh-1 mB-5 lib vam">Create Project Output Indicator</h4>&nbsp;
+    <a href="#create-output-indicator"
+    data-toggle="modal"
+    data-target="#create-output-indicator"
+    data-project_id="{{ Helper::encrypt_id($progress_report->project->id) }}"
+    data-outcome_id="{{ Helper::encrypt_id($outcome->id) }}"
+    data-output_id="{{ Helper::encrypt_id($output->id) }}"
+    class="modal-create btn btn-success pX-5 pY-2">
+      <i class="ti-plus"></i>
+    </a>
   </div>
-  @include('dashboard.project.progress-report.report.output.create')
+</div>
 @if(!$output->output_report->isEmpty())
   <div class="mB-10">
     <table style="width: 100% ">
@@ -48,5 +49,5 @@
     </table>
   </div>
 @else
-  No output indicator available!
+  <p>No output indicator available!</p>
 @endif

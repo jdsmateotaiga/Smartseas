@@ -8,9 +8,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="project_id" value="{{ Helper::encrypt_id($progress_report->project->id) }}">
-                <input type="hidden" name="outcome_id" value="{{ Helper::encrypt_id($outcome->id) }}">
-                <input type="hidden" name="output_id" value="{{ Helper::encrypt_id($output->id) }}">
+                <input type="hidden" name="project_id" id="pro_project_id" value="">
+                <input type="hidden" name="outcome_id" id="pro_outcome_id" value="">
+                <input type="hidden" name="output_id" id="pro_output_id" value="">
                 <div class="form-group">
                     <label for="indicator">Project Output Indicator/s</label>
                     <textarea id="indicator" name="indicator" class="form-control" autofocus ></textarea>

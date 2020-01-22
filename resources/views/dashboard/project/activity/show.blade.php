@@ -65,7 +65,7 @@
       <div class="col-md-6"><strong>Deliverables: </strong> {{ $activity->deliverables }}</div>
       <div class="col-md-3"><strong>Start Date: </strong> {{ $activity->start_date }}</div>
       <div class="col-md-3"><strong>End Date: </strong> {{ $activity->end_date }}</div>
-      <div class="col-md-6"><strong>Outcome Description: </strong>{{ Helper::the_excerpt($activity->description, 20) }} @if ( strlen($activity->description) > 20 ) <a href="#modal" data-toggle="modal" data-target="#modal">see more</a> @endif</div>
+      <div class="col-md-6"><strong>Activity Description: </strong>{{ Helper::the_excerpt($activity->description, 20) }} @if ( strlen($activity->description) > 20 ) <a href="#modal" data-toggle="modal" data-target="#modal">see more</a> @endif</div>
     </div>
  </div>
 </div>

@@ -26,7 +26,7 @@
       </div>
       <div class="col-md-6 row">
         <div class="col-md-12">
-          <div><strong>Outcome Description: </strong>{{ Helper::the_excerpt($output->description, 20) }} @if ( strlen($output->description) > 20 ) <a href="#modal" data-toggle="modal" data-target="#modal">see more</a> @endif</div>
+          <div><strong>Output Description: </strong>{{ Helper::the_excerpt($output->description, 20) }} @if ( strlen($output->description) > 20 ) <a href="#modal" data-toggle="modal" data-target="#modal">see more</a> @endif</div>
           <div>
         </div>
       </div>

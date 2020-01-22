@@ -26,7 +26,7 @@ class Activity extends Model
     }
 
     public function activity_report() {
-      return $this->hasMany('App\ProgressReportActivity', 'id', 'activity_id');
+      return $this->hasOne('App\ProgressReportActivity');
     }
 
     public function tasks() {

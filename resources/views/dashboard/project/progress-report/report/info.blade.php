@@ -2,7 +2,8 @@
 <img src="{{ $progress_report->owner->partner_admin_image }}" width="80" alt="" style="float: right">
 <h3>{{ $progress_report->title }}</h3>
 <p><i>Period: {{ $progress_report->reporting_date }}</i></p>
-<table id="report_detail" style="margin-bottom: 1em; width: 100%">
+<h5>A. BASIC INFORMATION</h5>
+<table id="report_detail" class="mB-30" style="width: 100%">
   <tbody>
     <tr>
       <th>Project ID / Output ID:</th>
@@ -54,4 +55,8 @@
     </tr>
   </tbody>
   </table>
+  <h5>B. INDICATIVE/EMERGING RESULTS OF THE PROJECT</h5>
+  <div class="bd mB-30 pX-20 pY-20">{{ $progress_report->results }}</div>
+  <h5>C. TECHNICAL ACCOMPLISHMENTS</h5>
+  <div>{{ $progress_report->technical_accomplishments }}</div>
 </div>

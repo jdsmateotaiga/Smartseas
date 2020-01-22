@@ -181,6 +181,7 @@ p.image_approve {
     display: inline-block;
 }
 
+.bg-low,
 .st-low .chip {
     background-color: #4F6228;
 }
@@ -189,6 +190,7 @@ p.image_approve {
   border: 1px dotted #4F6228;
 }
 
+.bg-medium,
 .st-medium .chip {
     background-color: #FFFF00;
 }
@@ -197,6 +199,7 @@ p.image_approve {
     border: 1px dotted #FFFF00;
 }
 
+.bg-high,
 .st-high .chip {
     background-color: #FF0000;
 }
@@ -424,3 +427,6 @@ body .main-content {
 #detail_awp { overflow-x: auto; }
 #detail_awp table { width: 2000px; }
 #summary tfoot td { background-color: #fbd1a2; color: #333; font-weight: bold; }
+
+td .btn.btn-danger,
+td .btn.btn-primary.modal-edit { padding: 0 4px }

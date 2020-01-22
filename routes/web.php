@@ -37,6 +37,7 @@ use App\User;
     Route::get('view_progress_report/{id}', 'ProgressReportController@show')->name('view_progress_report.show');
 
     Route::resource('progress_report_output', 'ProgressReportOutputController');
+    Route::resource('progress_report_activity', 'ProgressReportActivityController');
 
     Route::group(['middleware' => 'roles', 'roles'=>['partner']], function () {
 

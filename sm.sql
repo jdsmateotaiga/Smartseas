@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 11:11 PM
+-- Generation Time: Jan 22, 2020 at 11:00 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -35,7 +35,6 @@ CREATE TABLE `activities` (
   `outcome_id` int(255) NOT NULL,
   `output_id` int(255) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
   `deliverables` varchar(255) DEFAULT NULL,
   `start_date` varchar(255) DEFAULT NULL,
   `end_date` varchar(255) DEFAULT NULL,
@@ -48,9 +47,9 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `title`, `description`, `deliverables`, `start_date`, `end_date`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, 'Development of MPAN Planning tool', NULL, 'MPAN planning tool kit which includes guidelines on establishment and enhancement in three project sites and Monitoring & Evaluation (M&E) system', '2015', '2015', 1, '2019-12-28 13:37:43', '2019-12-28 13:37:43'),
-(2, 1, 1, 2, 2, 'Conduct of workshop/training on MPA costing (i.e.training of trainors)', NULL, 'Benchmark management costs established for MPAs of varying size size (<5ha, <50ha, <250ha and >250ha)', '2017', '2017', 1, '2020-01-03 14:05:41', '2020-01-03 14:05:41');
+INSERT INTO `activities` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `title`, `deliverables`, `start_date`, `end_date`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 1, 'Development of MPAN Planning tool', 'MPAN planning tool kit which includes guidelines on establishment and enhancement in three project sites and Monitoring & Evaluation (M&E) system', '2015', '2015', 1, '2019-12-28 13:37:43', '2019-12-28 13:37:43'),
+(2, 1, 1, 2, 2, 'Conduct of workshop/training on MPA costing (i.e.training of trainors)', 'Benchmark management costs established for MPAs of varying size size (<5ha, <50ha, <250ha and >250ha)', '2017', '2017', 1, '2020-01-03 14:05:41', '2020-01-03 14:05:41');
 
 -- --------------------------------------------------------
 
@@ -250,6 +249,7 @@ CREATE TABLE `progress_report_activities` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` int(255) NOT NULL,
+  `outcome_id` int(255) NOT NULL,
   `output_id` int(255) NOT NULL,
   `activity_id` int(255) NOT NULL,
   `status` varchar(255) DEFAULT NULL,
@@ -258,6 +258,13 @@ CREATE TABLE `progress_report_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `progress_report_activities`
+--
+
+INSERT INTO `progress_report_activities` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `status`, `accomplishment`, `challenges`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, 1, 1, 1, '2', 'asd', 'asd', NULL, '2020-01-23 13:59:35');
 
 -- --------------------------------------------------------
 
@@ -482,7 +489,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code`, `partner_name`, `partner_name_address`, `partner_admin_name`, `partner_admin_address`, `partner_admin_gender`, `partner_admin_position`, `partner_admin_image`, `partner_admin_ID`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
-(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'GwLm8P9dOoEZBnXNu4IVVTl2EjxfimeQ5GoiHenUPIhf6dscvUqHWNI9Vtg3', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
+(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'zRjRq4mdlbOKeMwkdgG1IjcQ57qPc5x649RrWYt4Y5Etf1sSXHAjuS0CgdKY', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
 (19, 1, 'projectmanager1@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'PM1', 'ProjectManager1', NULL, 'ProjectManager1', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, 'TB5E9PP2BApEDvcZQDdIt1gzEhyozGKTnpr13pVEJWQCVGGTzRQrxSGLOUr7', 1, '2019-08-11 16:55:34', '2019-08-17 14:29:06'),
 (20, 1, 'projectmanager2@gmail.com', '$2y$10$wBXx6OlZE3gh/g.2/bM00eK32gPoXyIA9hRyUHcoTLHH0lVNZ6/Li', 'PM2', 'ProjectManager2', NULL, 'ProjectManager2', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, NULL, 1, '2019-08-11 17:17:18', '2019-08-17 13:49:57'),
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
@@ -692,13 +699,13 @@ ALTER TABLE `progress_reports`
 -- AUTO_INCREMENT for table `progress_report_activities`
 --
 ALTER TABLE `progress_report_activities`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `progress_report_outputs`
 --
 ALTER TABLE `progress_report_outputs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `projects`

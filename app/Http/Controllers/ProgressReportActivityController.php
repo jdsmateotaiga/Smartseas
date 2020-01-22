@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ProgressReportActivity;
+use Auth;
+use Helper;
 
 class ProgressReportActivityController extends Controller
 {
@@ -35,6 +38,18 @@ class ProgressReportActivityController extends Controller
     public function store(Request $request)
     {
         //
+        $progress_report_activity = new ProgressReportActivity;
+        $progress_report_activity->user_id           = auth()->user()->id;
+        $progress_report_activity->project_id        = Helper::decrypt_id($request->input('project_id'));
+        $progress_report_activity->outcome_id        = Helper::decrypt_id($request->input('outcome_id'));
+        $progress_report_activity->output_id         = Helper::decrypt_id($request->input('output_id'));
+        $progress_report_activity->activity_id       = Helper::decrypt_id($request->input('activity_id'));
+        $progress_report_activity->status            = $request->input('status');
+        $progress_report_activity->accomplishment    = $request->input('accomplishment');
+        $progress_report_activity->challenges        = $request->input('challenges');
+        $progress_report_activity->save();
+        return back();
+
     }
 
     /**
@@ -57,6 +72,8 @@ class ProgressReportActivityController extends Controller
     public function edit($id)
     {
         //
+        $progress_report_activity = ProgressReportActivity::find(Helper::decrypt_id($id));
+        return response()->json($progress_report_activity);
     }
 
     /**
@@ -69,6 +86,12 @@ class ProgressReportActivityController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $progress_report_activity =  ProgressReportActivity::find(Helper::decrypt_id($id));
+        $progress_report_activity->status            = $request->input('status');
+        $progress_report_activity->accomplishment    = $request->input('accomplishment');
+        $progress_report_activity->challenges        = $request->input('challenges');
+        $progress_report_activity->update();
+        return back();
     }
 
     /**
@@ -80,5 +103,8 @@ class ProgressReportActivityController extends Controller
     public function destroy($id)
     {
         //
+        $progress_report_activity =  ProgressReportActivity::find(Helper::decrypt_id($id));
+        $progress_report_activity->delete();
+        return back();
     }
 }
