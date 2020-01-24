@@ -32,12 +32,15 @@ use App\User;
     Route::post('risklog/deactivate/{id}', 'RiskLogController@deactivate');
 
     Route::resource('progress_report', 'ProgressReportController');
+    Route::put('progress_report_submit/{id}', 'ProgressReportController@submit_report');
     Route::post('progress_report/activate/{id}', 'ProgressReportController@activate');
     Route::post('progress_report/deactivate/{id}', 'ProgressReportController@deactivate');
     Route::get('view_progress_report/{id}', 'ProgressReportController@show')->name('view_progress_report.show');
 
     Route::resource('progress_report_output', 'ProgressReportOutputController');
     Route::resource('progress_report_activity', 'ProgressReportActivityController');
+    Route::resource('partnership_forged', 'ProgressReportPartnershipForgedController');
+    Route::resource('management', 'ProgressReportManagementController');
 
     Route::group(['middleware' => 'roles', 'roles'=>['partner']], function () {
 

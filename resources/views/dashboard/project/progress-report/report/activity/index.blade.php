@@ -17,28 +17,28 @@
         <tr>
             <td>{{ $activity->title }}</td>
             <td>{{ $activity->deliverables }}</td>
-            @if($activity->activity_report)
+            @if($activity->activity_report($progress_report->id))
               @php
                 $risk_class = '';
-                if($activity->activity_report->status == 0) {
+                if($activity->activity_report($progress_report->id)->status == 0) {
                   $risk_class = 'bg-low';
-                } else if ($activity->activity_report->status == 1) {
+                } else if ($activity->activity_report($progress_report->id)->status == 1) {
                   $risk_class = 'bg-medium';
-                } else if ($activity->activity_report->status == 2) {
+                } else if ($activity->activity_report($progress_report->id)->status == 2) {
                   $risk_class  = 'bg-high';
                 }
               @endphp
               <td class="{{ $risk_class }}">
                 <span class="chip"></span>
               </td>
-              <td>{{ $activity->activity_report->accomplishment }}</td>
-              <td>{{ $activity->activity_report->challenges }}</td>
+              <td>{{ $activity->activity_report($progress_report->id)->accomplishment }}</td>
+              <td>{{ $activity->activity_report($progress_report->id)->challenges }}</td>
               <td>
                 <a class="btn btn-primary modal-edit" data-toggle="modal" data-target="#edit-activity-report" href="#edit-activity-report"
-                data-edit-url="{{ action('ProgressReportActivityController@edit', [ 'id' => Helper::encrypt_id($activity->activity_report->id) ]) }}"
-                data-action-url="{{ action('ProgressReportActivityController@update', [ 'id' => Helper::encrypt_id($activity->activity_report->id) ]) }}"
+                data-edit-url="{{ action('ProgressReportActivityController@edit', [ 'id' => Helper::encrypt_id($activity->activity_report($progress_report->id)->id) ]) }}"
+                data-action-url="{{ action('ProgressReportActivityController@update', [ 'id' => Helper::encrypt_id($activity->activity_report($progress_report->id)->id) ]) }}"
                 ><span class="ti-pencil"></span></a>
-                <form style="display: inline-block;" action="{{ action('ProgressReportActivityController@destroy', [ 'id'=> Helper::encrypt_id($activity->activity_report->id)] )}}" method="post">
+                <form style="display: inline-block;" action="{{ action('ProgressReportActivityController@destroy', [ 'id'=> Helper::encrypt_id($activity->activity_report($progress_report->id)->id)] )}}" method="post">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-danger"  onclick="return confirm('Are you sure you want to delete this item?');"><span class="ti-trash"></span></button>
@@ -50,6 +50,7 @@
                   data-toggle="modal"
                   data-target="#create-activity-report"
                   data-project_id="{{ Helper::encrypt_id($progress_report->project->id) }}"
+                  data-progress_report_id="{{ Helper::encrypt_id($progress_report->id) }}"
                   data-outcome_id="{{ Helper::encrypt_id($outcome->id) }}"
                   data-output_id="{{ Helper::encrypt_id($output->id) }}"
                   data-activity_id="{{ Helper::encrypt_id($activity->id) }}"

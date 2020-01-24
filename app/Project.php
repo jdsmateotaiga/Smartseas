@@ -15,19 +15,6 @@ class Project extends Model
         return $this->hasMany('App\Task');
     }
 
-    public function risk_logs() {
-      $query = $this->hasMany('App\RiskLog');
-      if(auth()->user()->hasRole('partner')) {
-          return $query->where([
-              ['user_id', auth()->user()->id],
-              ['active', 1],
-            ]);
-      } else {
-          return $this->hasMany('App\RiskLog')
-            ->where('active', 1);
-      }
-    }
-
     public function progress_reports() {
       $query = $this->hasMany('App\ProgressReport');
       if(auth()->user()->hasRole('partner')) {
@@ -40,6 +27,44 @@ class Project extends Model
               ['submitted', 1],
               ['active', 1]
             ]);
+      }
+    }
+
+    public function risk_logs($progress_report_id) {
+      $query = $this->hasMany('App\RiskLog');
+      if(auth()->user()->hasRole('partner')) {
+          return $query->where([
+              ['active', 1],
+              ['progress_report_id', $progress_report_id]
+            ])->get();
+      } else {
+          return $query->where([
+              ['active', 1],
+              ['progress_report_id', $progress_report_id]
+            ])->get();
+      }
+    }
+
+    public function progress_report_partnership_forged($progress_report_id) {
+
+      $query = $this->hasMany('App\ProgressReportPartnershipForged');
+      if(auth()->user()->hasRole('partner')) {
+        return $query->where([
+              ['progress_report_id', $progress_report_id]
+            ])->get();
+      } else {
+        return $query->where('progress_report_id', $progress_report_id)->get();
+      }
+    }
+
+    public function progress_report_management($progress_report_id) {
+      $query = $this->hasMany('App\ProgressReportManagement');
+      if(auth()->user()->hasRole('partner')) {
+        return $query->where([
+          ['progress_report_id', $progress_report_id]
+        ])->get();
+      } else {
+        return $query->where('progress_report_id', $progress_report_id)->get();
       }
     }
 

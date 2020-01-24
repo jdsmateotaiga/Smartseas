@@ -25,9 +25,42 @@
     </style>
   </head>
   <body id="progress_report">
+      @if (\Session::has('success'))
+        <div class="container mT-30">
+          <div class="alert alert-success pX-30 pY-20 alert-dismissible" role="alert">
+            <strong>Success!</strong> {!! \Session::get('success') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      @endif
+      @if($progress_report->submitted == 0)
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-report">
+        Submit Report
+      </button>
+      <div class="modal fade" id="submit-report" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 400px!important;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 style="margin-bottom: 0">Are you sure to submit this report ?</h5>
+            </div>
+            <div class="modal-body">
+              <form action="{{ action('ProgressReportController@submit_report', ['id' => Helper::encrypt_id($progress_report->id)]) }}" method="post">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+                <a type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
       @include('dashboard.project.progress-report.report.info')
       @include('dashboard.project.progress-report.report.report')
-
+      @include('dashboard.project.progress-report.partnership-forged.index', ['project' => $progress_report->project])
+      @include('dashboard.project.progress-report.management.index', ['project' => $progress_report->project])
       @include('dashboard.project.risk-log.index', ['project' => $progress_report->project])
 
       <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>

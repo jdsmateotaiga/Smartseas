@@ -21,11 +21,6 @@
                     <label for="results">Indicative/Emerging Results of the Project</label>
                     <textarea name="results" id="edit_results" class="form-control" rows="5"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="technical_accomplishments">Technical Accomplishments</label>
-                    <textarea name="technical_accomplishments" id="edit_technical_accomplishments" class="form-control" rows="5"></textarea>
-                </div>
-
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary save">Edit Progress Report</button>

@@ -1,4 +1,5 @@
-<table class="table table-striped risk-table mB-0" id="summary">
+@if( count($project->outcomes) )
+  <table class="table table-striped risk-table mB-0" id="summary">
     <thead class="thead-dark">
       <tr>
         <th>Outcome</th>
@@ -46,3 +47,6 @@
           <td>100%</td>
     </tfoot>
 </table>
+@else
+  No Summary!
+@endif

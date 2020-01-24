@@ -25,8 +25,8 @@ class Activity extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
 
-    public function activity_report() {
-      return $this->hasOne('App\ProgressReportActivity');
+    public function activity_report($progress_report_id) {
+      return $this->hasOne('App\ProgressReportActivity')->where('progress_report_id', $progress_report_id)->first();
     }
 
     public function tasks() {

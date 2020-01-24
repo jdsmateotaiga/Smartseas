@@ -1,22 +1,35 @@
 <div class="mL-20">
     <div class="mT-30 mB-10">
         <div class="layer w-100 text-left">
-        <h4 class="lh-1 mB-5 lib vam">Project Risk Log</h4>&nbsp;
-        <a href="#create-risk-log"
-        data-toggle="modal"
-        data-target="#create-risk-log"
-        class="modal-create btn btn-small btn-success pX-5 pY-2">
-            <i class="ti-plus"></i>
-        </a>
+          @if(Request::is('progress_report/*'))
+          <h5 class="lh-1 mB-5 lib vam">G. Project Risk Log</h5>&nbsp;
+          @else
+          <h4 class="lh-1 mB-5 lib vam">Project Risk Log</h4>&nbsp;
+          @endif
+          <a href="#create-risk-log"
+          data-toggle="modal"
+          data-target="#create-risk-log"
+          class="modal-create btn btn-small btn-success pX-5 pY-2">
+              <i class="ti-plus"></i>
+          </a>
+          @if(Request::is('progress_report/*'))
+            <br><small>Assess identified risks and record new risks that may affect project implementation:</small>
+          @endif
         </div>
     </div>
-    @if( count( $project->risk_logs) )
+    @php
+      $pr_id = 0;
+      if(Request::is('progress_report/*')) {
+        $pr_id = $progress_report->id;
+      }
+    @endphp
+    @if( count( $project->risk_logs($pr_id) ) )
         <div id="" class="bd mT-5">
             <table class="table table-striped risk-table mB-0">
                 <thead class="thead-dark">
                     @php
                         $new_year = [];
-                        foreach($project->risk_logs as $risk) {
+                        foreach($project->risk_logs($pr_id) as $risk) {
                                 $get_risk_log = explode(',', $risk->risk_level);
                                 foreach($get_risk_log as $year) {
                                     $get_year = explode('-', $year)[0];
@@ -48,17 +61,17 @@
                 </thead>
                 <tbody>
                     @php $count = 1; @endphp
-                    @foreach($project->risk_logs as $risk)
+                    @foreach($project->risk_logs($pr_id) as $risk)
                         <tr>
                             <td class="text-center">{{ $count++ }}</td>
-                            <td>{{ Helper::the_excerpt($risk->description, 50) }}</td>
+                            <td>{{ $risk->description }}</td>
                             <td>{{ $risk->date_identified }}</td>
                             <td>{{ $risk->type }}</td>
-                            <td>{{ Helper::the_excerpt($risk->response, 50) }}</td>
+                            <td>{{ $risk->response }}</td>
                             <td>{{ $risk->owner }}</td>
                             <td>{{ $risk->submitted_by }}</td>
                             <td>{{ $risk->last_update }}</td>
-                            <td>{{ Helper::the_excerpt($risk->status, 50) }}</td>
+                            <td>{{ $risk->status }}</td>
                             @php $get_year = explode(',', $risk->risk_level); @endphp
                             @foreach($new_year as $year)
                             <td class="td-max">

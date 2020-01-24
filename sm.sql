@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2020 at 11:00 PM
+-- Generation Time: Jan 25, 2020 at 12:40 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -224,7 +224,6 @@ CREATE TABLE `progress_reports` (
   `project_id` int(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `results` varchar(5000) DEFAULT NULL,
-  `technical_accomplishments` varchar(5000) DEFAULT NULL,
   `reporting_date` varchar(255) DEFAULT NULL,
   `active` int(255) NOT NULL DEFAULT 1,
   `submitted` int(1) NOT NULL DEFAULT 0,
@@ -236,8 +235,9 @@ CREATE TABLE `progress_reports` (
 -- Dumping data for table `progress_reports`
 --
 
-INSERT INTO `progress_reports` (`id`, `user_id`, `project_id`, `title`, `results`, `technical_accomplishments`, `reporting_date`, `active`, `submitted`, `created_at`, `updated_at`) VALUES
-(1, 26, 1, 'QUARTER PROGRESS REPORT[1]', '1234', '1234', 'April - June 2017', 1, 1, '2020-01-17 15:18:07', '2020-01-18 09:34:09');
+INSERT INTO `progress_reports` (`id`, `user_id`, `project_id`, `title`, `results`, `reporting_date`, `active`, `submitted`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, 'QUARTER PROGRESS REPORT[1]', '1234', 'April - June 2017', 1, 1, '2020-01-17 15:18:07', '2020-01-25 13:24:43'),
+(2, 26, 1, 'Test', 'test', 'test', 1, 0, '2020-01-25 11:22:07', '2020-01-25 11:22:07');
 
 -- --------------------------------------------------------
 
@@ -249,6 +249,7 @@ CREATE TABLE `progress_report_activities` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` int(255) NOT NULL,
+  `progress_report_id` int(255) NOT NULL DEFAULT 0,
   `outcome_id` int(255) NOT NULL,
   `output_id` int(255) NOT NULL,
   `activity_id` int(255) NOT NULL,
@@ -263,8 +264,35 @@ CREATE TABLE `progress_report_activities` (
 -- Dumping data for table `progress_report_activities`
 --
 
-INSERT INTO `progress_report_activities` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `activity_id`, `status`, `accomplishment`, `challenges`, `created_at`, `updated_at`) VALUES
-(1, 26, 1, 1, 1, 1, '2', 'asd', 'asd', NULL, '2020-01-23 13:59:35');
+INSERT INTO `progress_report_activities` (`id`, `user_id`, `project_id`, `progress_report_id`, `outcome_id`, `output_id`, `activity_id`, `status`, `accomplishment`, `challenges`, `created_at`, `updated_at`) VALUES
+(3, 26, 1, 1, 1, 1, 1, '2', 'ff', 'ff', '2020-01-25 14:26:08', '2020-01-25 14:26:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress_report_managements`
+--
+
+CREATE TABLE `progress_report_managements` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` int(255) NOT NULL,
+  `progress_report_id` int(255) NOT NULL DEFAULT 0,
+  `product` varchar(1000) DEFAULT NULL,
+  `type` varchar(1000) DEFAULT NULL,
+  `published` varchar(1000) DEFAULT NULL,
+  `audience` varchar(1000) DEFAULT NULL,
+  `link` varchar(1000) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `progress_report_managements`
+--
+
+INSERT INTO `progress_report_managements` (`id`, `user_id`, `project_id`, `progress_report_id`, `product`, `type`, `published`, `audience`, `link`, `created_at`, `updated_at`) VALUES
+(1, 26, 1, 1, 'MPA Ordinance Template', 'Planning tool', '\'June 2017', 'Local government units', NULL, '2020-01-24 19:31:12', '2020-01-24 19:18:15');
 
 -- --------------------------------------------------------
 
@@ -276,7 +304,8 @@ CREATE TABLE `progress_report_outputs` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `project_id` int(255) NOT NULL,
-  `outcome_id` int(1) NOT NULL,
+  `progress_report_id` int(255) NOT NULL DEFAULT 0,
+  `outcome_id` int(255) NOT NULL,
   `output_id` int(255) NOT NULL,
   `indicator` varchar(3000) DEFAULT NULL,
   `year` varchar(255) DEFAULT NULL,
@@ -291,8 +320,37 @@ CREATE TABLE `progress_report_outputs` (
 -- Dumping data for table `progress_report_outputs`
 --
 
-INSERT INTO `progress_report_outputs` (`id`, `user_id`, `project_id`, `outcome_id`, `output_id`, `indicator`, `year`, `baseline`, `quarter_milestone`, `annual_target`, `created_at`, `updated_at`) VALUES
-(2, 26, 1, 1, 1, 'ggss', '2012', 'asd', 'asd', 'asd', '2020-01-21 11:07:54', '2020-01-21 14:07:56');
+INSERT INTO `progress_report_outputs` (`id`, `user_id`, `project_id`, `progress_report_id`, `outcome_id`, `output_id`, `indicator`, `year`, `baseline`, `quarter_milestone`, `annual_target`, `created_at`, `updated_at`) VALUES
+(2, 26, 1, 1, 1, 1, 'ggss', '2012', 'asd', 'asd', 'asd', '2020-01-21 11:07:54', '2020-01-21 14:07:56'),
+(4, 26, 1, 1, 2, 2, 'aa', '2010', 'aa', 'aa', 'aa', '2020-01-25 14:28:10', '2020-01-25 14:28:10'),
+(5, 26, 1, 1, 2, 2, 'bb', '2013', 'bb', 'bb', 'bb', '2020-01-25 14:29:02', '2020-01-25 14:29:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress_report_partnership_forged`
+--
+
+CREATE TABLE `progress_report_partnership_forged` (
+  `id` int(11) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `project_id` int(255) NOT NULL,
+  `progress_report_id` int(255) DEFAULT 1,
+  `name` varchar(5000) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `description` varchar(5000) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `progress_report_partnership_forged`
+--
+
+INSERT INTO `progress_report_partnership_forged` (`id`, `user_id`, `project_id`, `progress_report_id`, `name`, `type`, `description`, `created_at`, `updated_at`) VALUES
+(2, 26, 1, 1, 'University of South Eastern Philippines (USEP), Obrero Campus', 'Academic Institution', 'USEP is heading the multi-sectoral group in developing the Davao City MPA network management plan. In continuing its partnership with city LGU, including the other major stakeholders, a Memorandum of Understanding (MOU) is being drafted and will include the', '2020-01-24 18:38:22', '2020-01-25 10:38:22'),
+(3, 26, 1, 1, 'xxx', 'xxx', 'xxx', '2020-01-24 22:43:48', '2020-01-25 14:43:48'),
+(4, 1, 1, 1, 'admin', 'admin', 'admin', '2020-01-25 14:44:01', '2020-01-25 14:44:01');
 
 -- --------------------------------------------------------
 
@@ -373,7 +431,9 @@ CREATE TABLE `risk_logs` (
 --
 
 INSERT INTO `risk_logs` (`id`, `user_id`, `project_id`, `progress_report_id`, `description`, `date_identified`, `type`, `response`, `owner`, `submitted_by`, `last_update`, `status`, `risk_level`, `active`, `created_at`, `updated_at`) VALUES
-(1, 26, '1', 1, 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life.', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-17 21:57:05', '2020-01-17 14:11:48');
+(1, 26, '1', 1, 'LGUs may change priority and shift support from the program to other programs given the two election periods within the program life.', '2014', 'Political', 'The local partners have conducted series of consultation and meetings to introuduce the Project to the LGUs.', 'Project Management Unit and Local Partners', 'Project Management Unit', '\'December 2016', 'Technical working group (TWG),network alliances, and other management structure were created/developed/enhanced. These new and exisiting management / corrodinating bodies include the concerned local government units.', '2015-1,2016-2,2017-1', 1, '2020-01-24 22:07:39', '2020-01-17 14:11:48'),
+(5, 26, '1', 1, 'as', '2011', 'as', 'as', 'as', 'as', 'as', 'as', '2015-2', 1, '2020-01-25 14:33:41', '2020-01-25 14:33:41'),
+(6, 1, '1', 0, 'vv', '2010', 'vv', 'vv', 'vv', 'vv', 'vv', 'vv', '2014-2', 1, '2020-01-25 14:34:53', '2020-01-25 14:34:53');
 
 -- --------------------------------------------------------
 
@@ -489,13 +549,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `who_add_user_id`, `email`, `password`, `partner_code`, `partner_name`, `partner_name_address`, `partner_admin_name`, `partner_admin_address`, `partner_admin_gender`, `partner_admin_position`, `partner_admin_image`, `partner_admin_ID`, `remember_token`, `active`, `created_at`, `updated_at`) VALUES
-(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'zRjRq4mdlbOKeMwkdgG1IjcQ57qPc5x649RrWYt4Y5Etf1sSXHAjuS0CgdKY', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
+(1, 0, 'smartseas@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'ADMIN1', 'SmartSeas PH', NULL, NULL, NULL, NULL, NULL, '/assets/static/images/user.png', NULL, 'NN9cshSWSA7yN1NVave3g56z9vEA1CrWGa6ji7SeX2SX8GvQiri6hMkouvm6', 1, '2018-07-16 21:25:34', '2019-11-04 06:10:51'),
 (19, 1, 'projectmanager1@gmail.com', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'PM1', 'ProjectManager1', NULL, 'ProjectManager1', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, 'TB5E9PP2BApEDvcZQDdIt1gzEhyozGKTnpr13pVEJWQCVGGTzRQrxSGLOUr7', 1, '2019-08-11 16:55:34', '2019-08-17 14:29:06'),
 (20, 1, 'projectmanager2@gmail.com', '$2y$10$wBXx6OlZE3gh/g.2/bM00eK32gPoXyIA9hRyUHcoTLHH0lVNZ6/Li', 'PM2', 'ProjectManager2', NULL, 'ProjectManager2', NULL, NULL, 'Project Manager', '/assets/static/images/user.png', NULL, NULL, 1, '2019-08-11 17:17:18', '2019-08-17 13:49:57'),
 (23, 1, 'cip@smartseas.ph', '$2y$10$h.sFF8PwEuL9F.zAHyh5tOnbRYGmiItbcrEhGTNveMlLOn2eMGSmO', 'CIP', 'Conservation International Philippines - Verde Island Passage', NULL, 'Conservation International Philippines', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:34:37', '2019-09-07 04:34:37'),
 (24, 1, 'nfrd@smartseas.ph', '$2y$10$7Oh29ZyhF9O.V1f.IP/EyetyA.vPSBTzQb5P2AwXGkoyq9.p6Oa6S', 'NFRD', 'National Fisheries Research and Development Institute - Southern Palawan', NULL, 'National Fisheries Research and Development Institute - Southern Palawan', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:35:48', '2019-09-07 04:35:48'),
 (25, 1, 'rp@smartseas.ph', '$2y$10$.E3hBfxFbAiyZLDUVTwv3.eLiZr46ZcaNOTBfI1Pm/YwBXzK1k0T.', 'RP', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:37:10', '2019-09-07 04:37:10'),
-(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, 'OciIVMXBbWUadt4E5yBOCZBANliV4DBHqurv3whtPC8MqxRVVeSC51c0sTMO', 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
+(26, 1, 'rpt@smartseas.ph', '$2y$10$Oixi85Uh1FO9yIv8L2PnDeM4InBxnTwPCEx2wVrKbiaypeFg9l42O', 'RPT', 'Rare Philippines - Tañon Strait Protected Seascape', '$2y$10$i5G8/F11/TUV2XWAjnbZ4eyvOVac2j9Tb6MswnTe.JIsrLBP6Ug7O', 'Rare Philippines - Tañon Strait Protected Seascape', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, 'tbuiwUTFbOLInIqw4ocilJ4YFRCaeXnpX3oWb1DGFbNRvH9e92G5CYC3CEul', 1, '2019-09-07 04:37:42', '2019-09-07 04:37:42'),
 (27, 1, 'wwf@smartseas.ph', '$2y$10$UPAo4z7IjZC7xlK0i8Pc7..GEXawx5yyJHOdV4g9Hk.5r6Xm.C0Ze', 'WWF', 'WWF - Davao Gulf', NULL, 'WWF - Davao Gulf', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:38:53', '2019-09-07 04:38:53'),
 (28, 1, 'hf@smartseas.ph', '$2y$10$wLtv/WG08rx2bs6B0eVK9uL12HZUKVJuAcIbVHwSwvlNjE0MTGvpm', 'HF', 'Haribon Foundation - Lanuza Bay', NULL, 'Haribon Foundation - Lanuza Bay', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:39:42', '2019-09-07 04:39:42'),
 (29, 1, 'fin@smartseas.ph', '$2y$10$kBngeCxfDong0M1EOSHbsuUx.IMUmGxuBHuNmCmT11iLhfnUA4FPq', 'FIN', 'Fishbase Information Network (FIN)', NULL, 'Fishbase Information Network (FIN)', NULL, NULL, 'Responsible partner', '/assets/static/images/user.png', NULL, NULL, 1, '2019-09-07 04:41:01', '2019-09-07 04:41:01'),
@@ -595,9 +655,21 @@ ALTER TABLE `progress_report_activities`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `progress_report_managements`
+--
+ALTER TABLE `progress_report_managements`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `progress_report_outputs`
 --
 ALTER TABLE `progress_report_outputs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `progress_report_partnership_forged`
+--
+ALTER TABLE `progress_report_partnership_forged`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -693,19 +765,25 @@ ALTER TABLE `outputs`
 -- AUTO_INCREMENT for table `progress_reports`
 --
 ALTER TABLE `progress_reports`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `progress_report_activities`
 --
 ALTER TABLE `progress_report_activities`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `progress_report_outputs`
 --
 ALTER TABLE `progress_report_outputs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `progress_report_partnership_forged`
+--
+ALTER TABLE `progress_report_partnership_forged`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -723,7 +801,7 @@ ALTER TABLE `remarks`
 -- AUTO_INCREMENT for table `risk_logs`
 --
 ALTER TABLE `risk_logs`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `roles`

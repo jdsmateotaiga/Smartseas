@@ -9,6 +9,11 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="project_id" value="{{ Helper::encrypt_id($project->id) }}">
+                @if(Request::is('progress_report/*'))
+                  <input type="hidden" name="progress_report_id" value="{{ Helper::encrypt_id($progress_report->id) }}">
+                @else
+                  <input type="hidden" name="progress_report_id" value="{{ Helper::encrypt_id(0) }}">
+                @endif
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea id="description" name="description" class="form-control" autofocus ></textarea>
@@ -54,7 +59,7 @@
                     <label for="status">Risk Level</label>
                     <input type="hidden" name="risk-count" id="risk-count">
                     <div id="risk-area" class="mB-5">
-                        
+
                     </div>
 
                     <a href="#" class="add-risk-level">Add Risk Level</a>

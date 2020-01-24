@@ -54,6 +54,7 @@ class ProgressReportOutputController extends Controller
           $progress_report_output = new ProgressReportOutput;
           $progress_report_output->user_id = auth()->user()->id;
           $progress_report_output->project_id = Helper::decrypt_id($request->input('project_id'));
+          $progress_report_output->progress_report_id = Helper::decrypt_id($request->input('progress_report_id'));
           $progress_report_output->outcome_id = Helper::decrypt_id($request->input('outcome_id'));
           $progress_report_output->output_id = Helper::decrypt_id($request->input('output_id'));
           $progress_report_output->indicator = $request->input('indicator');

@@ -43,6 +43,7 @@ class RiskLogController extends Controller
 
         $risklog->user_id = Auth()->user()->id;
         $risklog->project_id = $project_id;
+        $risklog->progress_report_id = Helper::decrypt_id($request->input('progress_report_id'));
         $risklog->description = $request->input('description');
         $risklog->date_identified = $request->input('date_identified');
         $risklog->type = $request->input('type');

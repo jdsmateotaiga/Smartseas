@@ -39,8 +39,9 @@ class ProgressReportActivityController extends Controller
     {
         //
         $progress_report_activity = new ProgressReportActivity;
-        $progress_report_activity->user_id           = auth()->user()->id;
-        $progress_report_activity->project_id        = Helper::decrypt_id($request->input('project_id'));
+        $progress_report_activity->user_id             = auth()->user()->id;
+        $progress_report_activity->project_id          = Helper::decrypt_id($request->input('project_id'));
+        $progress_report_activity->progress_report_id  = Helper::decrypt_id($request->input('progress_report_id'));
         $progress_report_activity->outcome_id        = Helper::decrypt_id($request->input('outcome_id'));
         $progress_report_activity->output_id         = Helper::decrypt_id($request->input('output_id'));
         $progress_report_activity->activity_id       = Helper::decrypt_id($request->input('activity_id'));

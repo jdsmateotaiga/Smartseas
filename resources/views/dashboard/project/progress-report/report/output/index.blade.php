@@ -1,10 +1,11 @@
 <div class="mT-10 mB-10">
   <div class="layer w-100 text-left">
-    <h4 class="lh-1 mB-5 lib vam">Create Project Output Indicator</h4>&nbsp;
+    <h6 class="lh-1 mB-5 lib vam">Create Project Output Indicator</h6>&nbsp;
     <a href="#create-output-indicator"
     data-toggle="modal"
     data-target="#create-output-indicator"
     data-project_id="{{ Helper::encrypt_id($progress_report->project->id) }}"
+    data-progress_report_id="{{ Helper::encrypt_id($progress_report->id) }}"
     data-outcome_id="{{ Helper::encrypt_id($outcome->id) }}"
     data-output_id="{{ Helper::encrypt_id($output->id) }}"
     class="modal-create btn btn-success pX-5 pY-2">
@@ -12,7 +13,7 @@
     </a>
   </div>
 </div>
-@if(!$output->output_report->isEmpty())
+@if( count($output->output_report($progress_report->id)) )
   <div class="mB-10">
     <table style="width: 100% ">
       <thead>
@@ -25,7 +26,7 @@
           </tr>
       </thead>
       <tbody>
-          @foreach($output->output_report as $output)
+          @foreach($output->output_report($progress_report->id) as $output)
           <tr>
             <td>{{ $output->indicator }}</td>
             <td>{{ $output->year }}</td>

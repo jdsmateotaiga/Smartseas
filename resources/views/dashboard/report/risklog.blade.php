@@ -1,11 +1,10 @@
-<div>
-  @if( count( $project->risk_logs) )
-      <div id="" class="bd mT-5">
+@if( count( $project->risk_logs(0)) )
+    <div id="" class="bd mT-5">
           <table class="table table-striped risk-table mB-0" id="risklog">
               <thead class="thead-dark">
                   @php
                       $new_year = [];
-                      foreach($project->risk_logs as $risk) {
+                      foreach($project->risk_logs(0) as $risk) {
                               $get_risk_log = explode(',', $risk->risk_level);
                               foreach($get_risk_log as $year) {
                                   $get_year = explode('-', $year)[0];
@@ -36,7 +35,7 @@
               </thead>
               <tbody>
                   @php $count = 1; @endphp
-                  @foreach($project->risk_logs as $risk)
+                  @foreach($project->risk_logs(0) as $risk)
                       <tr>
                           <td class="text-center">{{ $count++ }}</td>
                           <td>{{ $risk->description }}</td>
@@ -62,5 +61,6 @@
               </tbody>
           </table>
       </div>
-  @endif
-</div>
+@else
+  No active risk log!
+@endif

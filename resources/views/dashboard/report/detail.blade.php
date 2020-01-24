@@ -1,4 +1,5 @@
-<div style="width: 100%;">
+@if( count($project->outcomes) )
+  <div style="width: 100%;">
     @php $outcome_count = 0; @endphp
     @foreach($project->outcomes as $outcome)
     @php $outcome_count++; @endphp
@@ -174,3 +175,6 @@
       </tbody>
     </table>
 </div>
+@else
+  No detailed AWP!
+@endif

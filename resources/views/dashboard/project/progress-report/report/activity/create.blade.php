@@ -4,11 +4,12 @@
         {{ csrf_field() }}
           <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Project Output Indicator</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create Activity</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
                 <input type="hidden" name="project_id" id="pra_project_id" value="">
+                <input type="hidden" name="progress_report_id" id="pra_progress_report_id" value="">
                 <input type="hidden" name="outcome_id" id="pra_outcome_id" value="">
                 <input type="hidden" name="output_id" id="pra_output_id" value="">
                 <input type="hidden" name="activity_id" id="pra_activity_id" value="">

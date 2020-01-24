@@ -5,7 +5,7 @@
         {{ csrf_field() }}
           <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Project Output Indicator</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Activity</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary save">Create</button>
+                <button type="submit" class="btn btn-primary save">Update</button>
                 <a class="btn btn-secondary" data-dismiss="modal">Close</a>
             </div>
           </div>

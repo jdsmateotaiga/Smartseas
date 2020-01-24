@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="project_id" id="pro_project_id" value="">
+                <input type="hidden" name="progress_report_id" id="pro_progress_report_id" value="">
                 <input type="hidden" name="outcome_id" id="pro_outcome_id" value="">
                 <input type="hidden" name="output_id" id="pro_output_id" value="">
                 <div class="form-group">

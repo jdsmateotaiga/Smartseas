@@ -29,7 +29,6 @@
                         <th scope="col">Title</th>
                         <th scope="col">Reporting Date</th>
                         <th scope="col">Indicative/Emerging Results of the Project</th>
-                        <th scope="col">Technical Accomplishments</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -44,7 +43,6 @@
                             <td><a href="{{ route('progress_report.show', ['id' => Helper::encrypt_id($progress_report->id)]) }}">{{ Helper::the_excerpt($progress_report->title, 50) }}</a></td>
                             <td>{{ $progress_report->reporting_date }}</td>
                             <td>{{ Helper::the_excerpt($progress_report->results, 50) }}</td>
-                            <td>{{ Helper::the_excerpt($progress_report->technical_accomplishments, 50) }}</td>
                             <td>
                               <a class="lib btn btn-primary mL-10 modal-edit"
                                   data-toggle="modal"
@@ -56,7 +54,7 @@
                               </a>
                               <form style="display: inline-block; vertical-align: middle;" action="{{ action('ProgressReportController@deactivate', [ 'id'=> Helper::encrypt_id($progress_report->id)] )}}" method="post">
                                   {{ csrf_field() }}
-                                  <button type="submit" class="btn btn-danger" title="deactivate this risk log"  onclick="return confirm('Are you sure you want to deactivate this risk log?');"><i class="ti-trash"></i></button>
+                                  <button type="submit" class="btn btn-danger" title="deactivate this report"  onclick="return confirm('Are you sure you want to deactivate this report?');"><i class="ti-trash"></i></button>
                               </form>
                             </td>
                         </tr>

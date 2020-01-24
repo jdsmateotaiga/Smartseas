@@ -52,7 +52,6 @@ class ProgressReportController extends Controller
           $progress_report->title = $request->input('title');
           $progress_report->reporting_date = $request->input('reporting_date');
           $progress_report->results = $request->input('results');
-          $progress_report->technical_accomplishments = $request->input('technical_accomplishments');
           $progress_report->save();
           return back();
         }
@@ -112,7 +111,6 @@ class ProgressReportController extends Controller
           $progress_report->title = $request->input('title');
           $progress_report->reporting_date = $request->input('reporting_date');
           $progress_report->results = $request->input('results');
-          $progress_report->technical_accomplishments = $request->input('technical_accomplishments');
           if(auth()->user()->id == $progress_report->user_id || auth()->user()->hasRole('admin')) {
               $progress_report->update();
           }
@@ -139,6 +137,15 @@ class ProgressReportController extends Controller
     public function activate($id)
     {
       return Helper::activate(ProgressReport::class, $id);
+    }
+
+    public function submit_report($id)
+    {
+      $progress_report = ProgressReport::find(Helper::decrypt_id($id));
+      $progress_report->submitted = 1;
+      $progress_report->update();
+      return redirect()->back()->with('success', 'Progress Report Successfully Send');
+
     }
 
 }
