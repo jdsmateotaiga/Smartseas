@@ -29,6 +29,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Reporting Date</th>
                         <th scope="col">Indicative/Emerging Results of the Project</th>
+                        <th scope="col">Status</div>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -43,6 +44,11 @@
                             <td><a href="{{ route('progress_report.show', ['id' => Helper::encrypt_id($progress_report->id)]) }}">{{ Helper::the_excerpt($progress_report->title, 50) }}</a></td>
                             <td>{{ $progress_report->reporting_date }}</td>
                             <td>{{ Helper::the_excerpt($progress_report->results, 50) }}</td>
+                            <th scope="col">
+                              @if($progress_report->submitted)
+                                Submitted
+                              @endif
+                            </div>
                             <td>
                               <a class="lib btn btn-primary mL-10 modal-edit"
                                   data-toggle="modal"
